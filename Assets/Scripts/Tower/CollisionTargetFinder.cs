@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class CollisionTargetFinder : TargetFinder
 {
-    readonly Stack<Transform> _targets = new();
+    readonly Queue<Transform> _targets = new();
 
     public override IEnumerable<Transform> GetAvailableTargets()
     {
@@ -19,13 +19,13 @@ public class CollisionTargetFinder : TargetFinder
     void OnTriggerEnter(Collider other)
     {
         if(!other.CompareTag("Enemy")) return;
-        _targets.Push(other.transform);
+        _targets.Enqueue(other.transform);
     }
 
     void OnTriggerExit(Collider other)
     {
         if (!other.CompareTag("Enemy")) return;
 
-        _targets.Pop();
+        _targets.Dequeue();
     }
 }

@@ -2,12 +2,19 @@ using UnityEngine;
 [RequireComponent (typeof(Rigidbody))]
 public class Projectile : Bullet
 {
-    public Vector3 Velocity { get => _rb.velocity; set => _rb.velocity = value; }
+    [field: SerializeField] public float StartSpeed {  get; set; }
+
+    //public Vector3 Velocity { get => _rb.velocity; set => _rb.velocity = value; }
     Rigidbody _rb;
     
     void Awake()
     {
         _rb = GetComponent<Rigidbody>();
+    }
+
+    void OnEnable()
+    {
+        _rb.velocity = transform.forward * StartSpeed;
     }
 
     void OnCollisionEnter(Collision collision)

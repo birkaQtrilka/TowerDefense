@@ -3,7 +3,8 @@ using UnityEngine.Events;
 
 public class EndPoint : MonoBehaviour
 {
-    public UnityEvent<Enemy> enemyReached;
+    
+    public UnityEvent<Enemy> EnemyReached;
 
     void OnTriggerEnter(Collider other)
     {

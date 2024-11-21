@@ -146,3 +146,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f0e658edae16814980716940bd24d70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Sender: {fileID: 0}
+  <StartSpeed>k__BackingField: 20

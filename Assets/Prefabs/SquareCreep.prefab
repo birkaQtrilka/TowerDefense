@@ -47,6 +47,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10e30bdc19f68394b834178e6b37acec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls: []
+  _stats:
+    stats:
+    - rid: 2750516791768776713
+    - rid: 2750516791768776715
+  references:
+    version: 2
+    RefIds:
+    - rid: 2750516791768776713
+      type: {class: Health, ns: , asm: Assembly-CSharp}
+      data:
+        _value: 18
+    - rid: 2750516791768776715
+      type: {class: Speed, ns: , asm: Assembly-CSharp}
+      data:
+        _value: 0.31
 --- !u!195 &3383550496854697700
 NavMeshAgent:
   m_ObjectHideFlags: 0

@@ -1,12 +1,8 @@
 using UnityEngine;
-
-public class Tower : MonoBehaviour//make it generic and accept scriptable objects
+[SelectionBase]
+public class Tower : MonoBehaviour//make it generic and accept scriptable objects?
 {
-    //object pool?
-    //data for bullet remove later
-    [SerializeField] float speed;
 
-    //data for tower
     [SerializeField] float _attackSpeed;
     [SerializeField] Bullet _bulletPrefab;
 
@@ -44,8 +40,5 @@ public class Tower : MonoBehaviour//make it generic and accept scriptable object
         );
 
         bullet.Sender = gameObject;
-        //remove later
-        (bullet as Projectile).Velocity = transform.forward * speed;
-        Debug.DrawRay(bullet.transform.position, (bullet as Projectile).Velocity, Color.red, 2);
     }
 }
