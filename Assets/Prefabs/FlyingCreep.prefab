@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3383550496854697700}
   - component: {fileID: 2310967707001902028}
   m_Layer: 0
-  m_Name: SquareCreep 1
+  m_Name: FlyingCreep
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -61,21 +61,48 @@ MonoBehaviour:
     - rid: 2750516791768776713
       type: {class: Health, ns: , asm: Assembly-CSharp}
       data:
+        OnCurrentUpdate:
+          m_PersistentCalls:
+            m_Calls: []
+        OnOriginalUpdate:
+          m_PersistentCalls:
+            m_Calls: []
+        OnMaxUpdate:
+          m_PersistentCalls:
+            m_Calls: []
         _currentValue: 1
-        <OriginalValue>k__BackingField: 1
-        <MaxValue>k__BackingField: 20
+        _originalValue: 0
+        _maxValue: 0
     - rid: 2750516791768776715
       type: {class: Speed, ns: , asm: Assembly-CSharp}
       data:
-        _value: 0.31
-        <OriginalValue>k__BackingField: 0.31
-        <MaxValue>k__BackingField: 10
+        OnCurrentUpdate:
+          m_PersistentCalls:
+            m_Calls: []
+        OnOriginalUpdate:
+          m_PersistentCalls:
+            m_Calls: []
+        OnMaxUpdate:
+          m_PersistentCalls:
+            m_Calls: []
+        _currentValue: 0
+        _originalValue: 0
+        _maxValue: 0
     - rid: 2750516940464193536
       type: {class: CarriedMoney, ns: , asm: Assembly-CSharp}
       data:
-        <CurrentValue>k__BackingField: 10
-        <OriginalValue>k__BackingField: 10
-        <MaxValue>k__BackingField: 20
+        OnCurrentUpdate:
+          m_PersistentCalls:
+            m_Calls: []
+        OnOriginalUpdate:
+          m_PersistentCalls:
+            m_Calls: []
+        OnMaxUpdate:
+          m_PersistentCalls:
+            m_Calls: []
+        _currentValue: 0
+        _originalValue: 0
+        _maxValue: 0
 --- !u!195 &3383550496854697700
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -132,7 +159,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 15034ff00d33b624fbe98f7b78e30f70, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.926
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 15034ff00d33b624fbe98f7b78e30f70, type: 3}
       propertyPath: m_LocalPosition.z
@@ -164,6 +191,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 15034ff00d33b624fbe98f7b78e30f70, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 15034ff00d33b624fbe98f7b78e30f70, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d6bbdcf702457e8458bb3072e6a6096d, type: 2}
+    - target: {fileID: 6500000, guid: 15034ff00d33b624fbe98f7b78e30f70, type: 3}
+      propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

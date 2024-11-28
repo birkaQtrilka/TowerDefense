@@ -5,15 +5,13 @@ public class DummyAimer : Aimer
 {
     public override Quaternion GetAttackLook(Bullet bullet, IEnumerable<Transform> targets)
     {
-        //if(bullet is Projectile)
-        //{
-            var enumer = targets.GetEnumerator();
-            if (!enumer.MoveNext()) return Quaternion.identity;
-            var firstTarget = enumer.Current;
+        Transform firstTarget = null;
+        foreach (Transform t in targets) 
+            if(t != null)
+                firstTarget = t;
+        if(firstTarget == null) return Quaternion.identity;
+        
+        return  Quaternion.LookRotation((firstTarget.position - transform.position).normalized);
 
-            return  Quaternion.LookRotation((firstTarget.position - transform.position).normalized);
-        //}
-
-        //return Quaternion.identity;
     }
 }

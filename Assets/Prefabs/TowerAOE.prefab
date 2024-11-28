@@ -346,27 +346,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d26160057dbd2f4ea7211fef42d8c05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _attackSpeed: 1
+  <Stats>k__BackingField:
+    stats:
+    - rid: 2750516902491324417
   _bulletPrefab: {fileID: 5948655671147615617, guid: e8ca0b86841aba644b56db4df9ce31cb,
     type: 3}
   _finder: {fileID: 4754223096699535321}
   _aimer: {fileID: 718480315369747637}
   _bulletSpawnSpot: {fileID: 8394838147740747789}
-  <Stats>k__BackingField:
-    stats:
-    - rid: 2750516902491324416
-    - rid: 2750516902491324417
   references:
     version: 2
     RefIds:
-    - rid: 2750516902491324416
-      type: {class: Health, ns: , asm: Assembly-CSharp}
-      data:
-        _value: 12
     - rid: 2750516902491324417
       type: {class: Speed, ns: , asm: Assembly-CSharp}
       data:
-        _value: 1.3
+        OnCurrentUpdate:
+          m_PersistentCalls:
+            m_Calls: []
+        OnOriginalUpdate:
+          m_PersistentCalls:
+            m_Calls: []
+        OnMaxUpdate:
+          m_PersistentCalls:
+            m_Calls: []
+        _currentValue: 0
+        _originalValue: 0
+        _maxValue: 0
 --- !u!114 &718480315369747637
 MonoBehaviour:
   m_ObjectHideFlags: 0

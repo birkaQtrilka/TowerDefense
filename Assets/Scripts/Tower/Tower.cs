@@ -48,6 +48,7 @@ public class Tower : MonoBehaviour//make it generic and accept scriptable object
         );
 
         bullet.Sender = gameObject;
+        bullet.Init();
     }
 
 }

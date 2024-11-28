@@ -4,7 +4,7 @@ using UnityEngine;
 public class LinearEnemySpawner : EnemySpawner
 {
     [SerializeField] bool _spawn;
-
+    
     protected override IEnumerator SpawnWaves()
     {
         foreach (var wave in waves)

@@ -3,21 +3,23 @@ using UnityEngine;
 public class Projectile : Bullet
 {
     [field: SerializeField] public float StartSpeed {  get; set; }
-
-    Rigidbody _rb;
+    [SerializeField] int _damage= 2;
     
+    Rigidbody _rb;
     void Awake()
     {
         _rb = GetComponent<Rigidbody>();
     }
 
-    void OnCollisionEnter(Collision collision)
+    void OnTriggerEnter(Collider collision)
     {
-        if (!collision.gameObject.TryGetComponent<Enemy>(out var enemy)) return;
+        var enemy = collision.gameObject.GetComponentInParent<Enemy>();
+        if (enemy == null) return;
+        Debug.Log("Collided: " + collision.gameObject);
 
         CallOnHitEvent(enemy.gameObject);
-        //enemy get health
-        Destroy(enemy.gameObject);
+        
+        enemy.GetHealth().CurrentValue -= _damage;
     }
 
     public override void Init()

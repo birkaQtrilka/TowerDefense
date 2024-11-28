@@ -8,8 +8,9 @@ public class EndPoint : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (!other.TryGetComponent<Enemy>(out var enemy))return;
-        Destroy(enemy);
+        var enemy = other.GetComponentInParent<Enemy>();
+        if (enemy == null)return;
+        Destroy(enemy.gameObject);
 
     }
 }

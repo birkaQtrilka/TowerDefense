@@ -4,6 +4,7 @@ using UnityEngine;
 public abstract class Bullet : MonoBehaviour
 {
     [HideInInspector] public GameObject Sender;
+
     //sender, victim
     public event Action<GameObject, GameObject> OnHit;
     protected void CallOnHitEvent(GameObject victim) => OnHit?.Invoke(Sender, victim);

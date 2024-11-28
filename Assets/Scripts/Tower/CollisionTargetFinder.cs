@@ -19,12 +19,22 @@ public class CollisionTargetFinder : TargetFinder
     void OnTriggerEnter(Collider other)
     {
         if(!other.CompareTag("Enemy")) return;
+        Debug.Log("entered " + other.gameObject);
         _targets.Enqueue(other.transform);
     }
-
+    void Update()
+    {
+        if(_targets.Count == 0) return;
+        if(_targets.Peek() == null) 
+            _targets.Dequeue();
+    }
     void OnTriggerExit(Collider other)
     {
+        if (_targets.Count != 0 && _targets.Peek() == null)
+            _targets.Dequeue();
+
         if (!other.CompareTag("Enemy")) return;
+        Debug.Log("exited " + other.gameObject);
 
         _targets.Dequeue();
     }
