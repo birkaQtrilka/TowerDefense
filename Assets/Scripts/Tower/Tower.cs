@@ -1,9 +1,10 @@
+using System.Collections.Generic;
 using UnityEngine;
 [SelectionBase]
 public class Tower : MonoBehaviour//make it generic and accept scriptable objects?
 {
+    [field: SerializeField] public StatsContainer Stats { get; private set; }
 
-    [SerializeField] float _attackSpeed;
     [SerializeField] Bullet _bulletPrefab;
 
 
@@ -11,20 +12,27 @@ public class Tower : MonoBehaviour//make it generic and accept scriptable object
     [SerializeField] Aimer _aimer;
     [SerializeField] Transform _bulletSpawnSpot;
 
+    Speed _attackSpeed;
     float _currSpeed;
 
     void OnDrawGizmos()
     {
+        
         Gizmos.DrawRay(transform.position, _aimer.GetAttackLook(null, _finder.GetAvailableTargets()) * Vector3.forward);    
     }
-
+    
+    void Awake()
+    {
+         _attackSpeed = Stats.GetStat<Speed>();
+    }
+    
     void Update()
     {
         if (_finder.GetSingleTarget() == null) return;
         //put this in view class?
         transform.rotation = _aimer.GetAttackLook(null, _finder.GetAvailableTargets());
         _currSpeed += Time.deltaTime;
-        if (_currSpeed < _attackSpeed) return;
+        if (_currSpeed < _attackSpeed.CurrentValue) return;
         _currSpeed = 0;
         Shoot();
     }
@@ -41,4 +49,5 @@ public class Tower : MonoBehaviour//make it generic and accept scriptable object
 
         bullet.Sender = gameObject;
     }
+
 }

@@ -54,17 +54,28 @@ MonoBehaviour:
     stats:
     - rid: 2750516791768776713
     - rid: 2750516791768776715
+    - rid: 2750516940464193536
   references:
     version: 2
     RefIds:
     - rid: 2750516791768776713
       type: {class: Health, ns: , asm: Assembly-CSharp}
       data:
-        _value: 18
+        _currentValue: 1
+        <OriginalValue>k__BackingField: 1
+        <MaxValue>k__BackingField: 20
     - rid: 2750516791768776715
       type: {class: Speed, ns: , asm: Assembly-CSharp}
       data:
         _value: 0.31
+        <OriginalValue>k__BackingField: 0.31
+        <MaxValue>k__BackingField: 10
+    - rid: 2750516940464193536
+      type: {class: CarriedMoney, ns: , asm: Assembly-CSharp}
+      data:
+        <CurrentValue>k__BackingField: 10
+        <OriginalValue>k__BackingField: 10
+        <MaxValue>k__BackingField: 20
 --- !u!195 &3383550496854697700
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -74,7 +85,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 9205730846547285193}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 0.2
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50

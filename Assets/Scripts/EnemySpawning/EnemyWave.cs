@@ -31,6 +31,10 @@ public struct EnemyWave //should it be a scriptable object?
     {
         return _enemySets;
     }
+    public EnemySet[] GetEnemySetsCopy()
+    {
+        return _enemySets.Clone() as EnemySet[];
+    }
     //other data abt wave
 }
 

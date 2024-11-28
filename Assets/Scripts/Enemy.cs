@@ -2,17 +2,23 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-[RequireComponent (typeof(IWalker))]
+[RequireComponent (typeof(IMover))]
 public class Enemy : MonoBehaviour
 {
     public UnityEvent<Enemy> OnDeath;
     [SerializeField] StatsContainer _stats;
-    IWalker _walker;
+    IMover _walker;
+
+    Health _health;
 
     void Awake()
     {
-        _walker = GetComponent<IWalker>();
+        _walker = GetComponent<IMover>();
+        _health = _stats.GetStat<Health>();
     }
     
-
+    public Health GetHealth()
+    {
+        return _health;
+    }
 }

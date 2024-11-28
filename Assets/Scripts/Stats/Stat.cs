@@ -1,21 +1,18 @@
-
-using System.Collections.Generic;
-using System;
-using UnityEngine;
-
 [System.Serializable]
 public abstract class Stat<T> : Stat
 {
-    public abstract T Value { get; protected set; }
+    public abstract T CurrentValue { get; protected set; }
+    public abstract T OriginalValue { get; protected set; }
+    public abstract T MaxValue { get; protected set; }
+
+    public override string ToString()
+    {
+        return OriginalValue.ToString();
+    }
 }
+
 [System.Serializable]
 public abstract class Stat
 {
 
-}
-
-[Serializable]
-public class StatsContainer
-{
-    [SerializeReference] public List<Stat> stats;
 }

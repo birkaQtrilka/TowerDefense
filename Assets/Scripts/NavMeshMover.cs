@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 [RequireComponent (typeof(NavMeshAgent))]
-public class NavMeshWalker : MonoBehaviour, IWalker
+public class NavMeshMover : MonoBehaviour, IMover
 {
     Vector3 _destination;
     NavMeshAgent _navAgent;
@@ -13,10 +13,11 @@ public class NavMeshWalker : MonoBehaviour, IWalker
 
     public void SetDestination(Vector3 destination)
     {
+        
         _destination = destination;
     }
 
-    public void WalkToDestination()
+    public void MoveToDestination()
     {
         _navAgent.SetDestination(_destination);
     }

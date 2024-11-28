@@ -1,7 +1,7 @@
 using UnityEngine;
 
-public interface IWalker 
+public interface IMover 
 {
     void SetDestination(Vector3 destination);
-    void WalkToDestination();
+    void MoveToDestination();
 }

@@ -21,7 +21,7 @@ public class NavMeshPathingManager : PathingManager
     Vector3 ShootRay(GameObject go)
     {
         if (!Physics.Raycast(go.transform.position, go.transform.forward,
-            out RaycastHit hit, 10,_layerMask/*, 1 << LayerMask.NameToLayer("AIPath")*/))
+            out RaycastHit hit, 10,_layerMask.value))
         {
             Debug.LogError("could not hit any nav mesh collider");
             return Vector3.zero;
