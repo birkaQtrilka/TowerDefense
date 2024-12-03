@@ -369,7 +369,7 @@ MonoBehaviour:
         OnMaxUpdate:
           m_PersistentCalls:
             m_Calls: []
-        _currentValue: 0
+        _currentValue: 1.07
         _originalValue: 0
         _maxValue: 0
 --- !u!114 &718480315369747637

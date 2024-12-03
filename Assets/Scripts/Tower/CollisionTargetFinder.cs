@@ -4,6 +4,13 @@ using UnityEngine;
 public class CollisionTargetFinder : TargetFinder
 {
     readonly Queue<Transform> _targets = new();
+    SphereCollider _collider;
+
+    public override float Range { get => _collider.radius; set => _collider.radius = value; }
+    void Awake()
+    {
+        _collider = GetComponent<SphereCollider>();
+    }
 
     public override IEnumerable<Transform> GetAvailableTargets()
     {

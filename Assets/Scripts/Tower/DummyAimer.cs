@@ -12,6 +12,5 @@ public class DummyAimer : Aimer
         if(firstTarget == null) return Quaternion.identity;
         
         return  Quaternion.LookRotation((firstTarget.position - transform.position).normalized);
-
     }
 }

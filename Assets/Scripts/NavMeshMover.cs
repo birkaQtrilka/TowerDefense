@@ -1,10 +1,13 @@
 using UnityEngine;
 using UnityEngine.AI;
+
 [RequireComponent (typeof(NavMeshAgent))]
 public class NavMeshMover : MonoBehaviour, IMover
 {
     Vector3 _destination;
     NavMeshAgent _navAgent;
+
+    public Vector3 Velocity => _navAgent.velocity;
 
     void Awake()
     {

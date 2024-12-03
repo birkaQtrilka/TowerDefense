@@ -6,6 +6,8 @@ public class Projectile : Bullet
     [SerializeField] int _damage= 2;
     
     Rigidbody _rb;
+    public Vector3 Velocity => _rb.velocity;
+
     void Awake()
     {
         _rb = GetComponent<Rigidbody>();
