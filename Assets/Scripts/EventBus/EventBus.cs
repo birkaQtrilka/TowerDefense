@@ -2,26 +2,24 @@ using System;
 
 public class EventBus<T> where T : IEvent
 {
-    public static event Action<T> Invoked;
+    public static event Action<T> Event;
 
     public static void Publish(T args)
     {
-        Invoked?.Invoke(args);
+        Event?.Invoke(args);
     }
 }
 
 public interface IEvent { }
 
-public class TowerSelected : IEvent 
+public readonly struct MoneySpent : IEvent
 {
-    public Tower Tower { get; }
-
-    public TowerSelected(Tower tower)
+    public int Amount { get; }
+    public int NewTotal { get; }
+    public MoneySpent(int amount, int money)
     {
-        Tower = tower;
+        Amount = amount;
+        NewTotal = money;
     }
-
-
-    
 }
 

@@ -1,5 +1,4 @@
 using System;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -22,6 +21,19 @@ public class StoreSlot : MonoBehaviour
             UpdateSlot();
         }
     }
+
+#if UNITY_EDITOR
+    void OnValidate()
+    {
+        if (Data == null)
+        {
+            return;
+        }
+        if (_image.sprite != _data)    
+            UpdateSlot();
+    }
+#endif
+
     void UpdateSlot()
     {
         _image.sprite = _data.StoreSlotImage;
