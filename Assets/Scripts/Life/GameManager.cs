@@ -39,6 +39,11 @@ public class GameManager : MonoBehaviour, IStateMachine
             { typeof(Defend), new Defend(this)}
         };
 
+        
+    }
+    
+    void Start()
+    {
         CurrentState = _states[typeof(Build)];
         CurrentState.OnEnter();
     }

@@ -148,8 +148,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Sender: {fileID: 0}
+  OnHit:
+    m_PersistentCalls:
+      m_Calls: []
   <StartSpeed>k__BackingField: 20
   _damage: 2
+  _pierce: 0
 --- !u!114 &-4993867220448074570
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -17,7 +17,6 @@ public class Tower : MonoBehaviour//make it generic and accept scriptable object
 
     void OnDrawGizmos()
     {
-        
         Gizmos.DrawRay(transform.position, _aimer.GetAttackLook(null, _finder.GetAvailableTargets()) * Vector3.forward);    
     }
     
@@ -47,7 +46,7 @@ public class Tower : MonoBehaviour//make it generic and accept scriptable object
             rotation: _aimer.GetAttackLook(bullet, _finder.GetAvailableTargets())
         );
 
-        bullet.Sender = gameObject;
+        bullet.Sender = this;
         bullet.Init();
     }
 

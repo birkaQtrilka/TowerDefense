@@ -105,16 +105,28 @@ MonoBehaviour:
       data:
         OnCurrentUpdate:
           m_PersistentCalls:
-            m_Calls: []
+            m_Calls:
+            - m_Target: {fileID: 2310967707001902028}
+              m_TargetAssemblyTypeName: NavMeshMover, Assembly-CSharp
+              m_MethodName: SetMoveSpeed
+              m_Mode: 0
+              m_Arguments:
+                m_ObjectArgument: {fileID: 0}
+                m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+                m_IntArgument: 0
+                m_FloatArgument: 0
+                m_StringArgument: 
+                m_BoolArgument: 0
+              m_CallState: 2
         OnOriginalUpdate:
           m_PersistentCalls:
             m_Calls: []
         OnMaxUpdate:
           m_PersistentCalls:
             m_Calls: []
-        _currentValue: 0
-        _originalValue: 0
-        _maxValue: 0
+        _currentValue: 2
+        _originalValue: 2
+        _maxValue: 2
     - rid: 2750516940464193536
       type: {class: CarriedMoney, ns: , asm: Assembly-CSharp}
       data:
@@ -287,19 +299,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6500000, guid: 15034ff00d33b624fbe98f7b78e30f70, type: 3}
       propertyPath: m_Size.x
-      value: 2.09
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6500000, guid: 15034ff00d33b624fbe98f7b78e30f70, type: 3}
       propertyPath: m_Size.y
-      value: 1.37
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6500000, guid: 15034ff00d33b624fbe98f7b78e30f70, type: 3}
       propertyPath: m_Size.z
-      value: 1.52
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6500000, guid: 15034ff00d33b624fbe98f7b78e30f70, type: 3}
       propertyPath: m_Center.y
-      value: 0.98
+      value: 0.58
       objectReference: {fileID: 0}
     - target: {fileID: 6500000, guid: 15034ff00d33b624fbe98f7b78e30f70, type: 3}
       propertyPath: m_IsTrigger

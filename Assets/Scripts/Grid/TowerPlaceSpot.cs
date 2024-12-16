@@ -6,10 +6,12 @@ public class TowerPlaceSpot : MonoBehaviour
     [SerializeField] GameObject _hoverVisual;
     [SerializeField] Transform _placePos;
 
+    public Tower HoldingTower { get; private set; }
+
     public void PlaceTower(TowerData data)
     {
-        Tower tower = Instantiate(data.Prefab);
-        tower.transform.position = _placePos.position;
+        HoldingTower = Instantiate(data.Prefab);
+        HoldingTower.transform.position = _placePos.position;
     }    
 
     public void HoverState()

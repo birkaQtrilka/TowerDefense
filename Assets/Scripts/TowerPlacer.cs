@@ -72,8 +72,8 @@ public class TowerPlacer : MonoBehaviour
         selection.HoverState();
         _prevPlace = selection;
 
-        if (!clicked) return;
-
+        if (!clicked || selection.HoldingTower != null) return;
+        
         selection.PlaceTower(_currentSelection);
         TowerPlaced?.Invoke(_currentSelection);
         Deselect();

@@ -15,9 +15,9 @@ GameObject:
   - component: {fileID: 7169701652096931100}
   - component: {fileID: 5948655671147615617}
   - component: {fileID: -4993867220448074570}
-  - component: {fileID: 1733848456968551341}
+  - component: {fileID: 7926673138783323312}
   m_Layer: 0
-  m_Name: BombBullet
+  m_Name: SlowBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -148,14 +148,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f0e658edae16814980716940bd24d70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Sender: {fileID: 0}
   OnHit:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1733848456968551341}
-        m_TargetAssemblyTypeName: Exploder, Assembly-CSharp
-        m_MethodName: Explode
-        m_Mode: 1
+      - m_Target: {fileID: 7926673138783323312}
+        m_TargetAssemblyTypeName: Slower, Assembly-CSharp
+        m_MethodName: DoSlow
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -164,8 +163,11 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnEnemyCollide:
+    m_PersistentCalls:
+      m_Calls: []
   <StartSpeed>k__BackingField: 20
-  _damage: 2
+  _pierce: 0
 --- !u!114 &-4993867220448074570
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -178,8 +180,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d17b74f87d591e429a9610a601d515b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _time: 2
---- !u!114 &1733848456968551341
+  _time: 4
+--- !u!114 &7926673138783323312
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -188,7 +190,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6115339805259624003}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5688caa9a54a6648acbaa6bd54a744f, type: 3}
+  m_Script: {fileID: 11500000, guid: 3dad0a7109dc8f141850f56f5fc02da5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _addedRadius: 0.3
+  _slowAmount: 0.1
