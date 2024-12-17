@@ -3,8 +3,7 @@ using UnityEngine;
 
 public class TowerPlacer : MonoBehaviour
 {
-    public static TowerPlacer Instance {  get; private set; }
-    public event Action<TowerData> TowerPlaced;
+    public static event Action<TowerData> TowerPlaced;
 
     [SerializeField] LayerMask _tileMask;
 
@@ -21,15 +20,6 @@ public class TowerPlacer : MonoBehaviour
     {
         TowerPlaced = null;
         _currentSelection = null;
-    }
-
-    void Awake()
-    {
-        if (Instance != null && Instance != this)
-            Destroy(gameObject);
-        else
-            Instance = this;
-
     }
 
     void OnEnable()

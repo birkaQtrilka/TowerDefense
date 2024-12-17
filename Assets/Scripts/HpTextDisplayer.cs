@@ -1,8 +1,8 @@
 ﻿public class HpTextDisplayer : TextPopUpSpawner
 {
-    public void ParseHp(int prev,int hp)
+    public void ParseHp(int prev, Stat<int> hp)
     {
-        ShowText("hp: " + (prev - hp));
+        ShowText("hp: " + (prev - hp.CurrentValue));
     }
 
 }

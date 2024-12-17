@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour, IStateMachine
     [field: SerializeField] public Store Store { get; private set; }
     [field: SerializeField] public EnemySpawner EnemySpawner { get; private set; }
     [field: SerializeField] public GameOverUI GameOverUI { get; private set; }
+    [field: SerializeField] public TowerSelector TowerSelector { get; private set; }
+    [field: SerializeField] public TowerPlacer TowerPlacer { get; private set; }
 
     public void TransitionToState(Type state)
     {
@@ -81,13 +83,18 @@ public class Build : State<GameManager>
     public override void OnEnter()
     {
         context.Store.gameObject.SetActive(true);
-        TowerPlacer.Instance.enabled = true;
+        context.TowerPlacer.enabled = true;
+        context.TowerSelector.enabled = true;
+
     }
 
     public override void OnExit()
     {
         context.Store.gameObject.SetActive(false);
-        TowerPlacer.Instance.enabled = false;
+        context.TowerPlacer.enabled = false;
+        context.TowerSelector.Deselect();
+        context.TowerSelector.enabled = false;
+
     }
 
     public override void Update()

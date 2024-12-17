@@ -117,7 +117,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _fill: {fileID: 2497995829735193873}
-  _enemy: {fileID: 8663661722552875389}
 --- !u!114 &2081186858638654845
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -358,9 +357,21 @@ MonoBehaviour:
     - rid: 2750516791768776713
       type: {class: Health, ns: , asm: Assembly-CSharp}
       data:
-        OnCurrentUpdate:
+        <CurrentUpdated>k__BackingField:
           m_PersistentCalls:
             m_Calls:
+            - m_Target: {fileID: 8663661722552875389}
+              m_TargetAssemblyTypeName: HpBar, Assembly-CSharp
+              m_MethodName: 
+              m_Mode: 0
+              m_Arguments:
+                m_ObjectArgument: {fileID: 0}
+                m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+                m_IntArgument: 0
+                m_FloatArgument: 0
+                m_StringArgument: 
+                m_BoolArgument: 0
+              m_CallState: 2
             - m_Target: {fileID: 7131212567617144031}
               m_TargetAssemblyTypeName: HpTextDisplayer, Assembly-CSharp
               m_MethodName: ParseHp
@@ -373,10 +384,10 @@ MonoBehaviour:
                 m_StringArgument: 
                 m_BoolArgument: 0
               m_CallState: 2
-        OnOriginalUpdate:
+        <OriginalUpdated>k__BackingField:
           m_PersistentCalls:
             m_Calls: []
-        OnMaxUpdate:
+        <MaxUpdated>k__BackingField:
           m_PersistentCalls:
             m_Calls: []
         _currentValue: 4
@@ -385,7 +396,7 @@ MonoBehaviour:
     - rid: 2750516791768776715
       type: {class: Speed, ns: , asm: Assembly-CSharp}
       data:
-        OnCurrentUpdate:
+        <CurrentUpdated>k__BackingField:
           m_PersistentCalls:
             m_Calls:
             - m_Target: {fileID: 2310967707001902028}
@@ -400,10 +411,10 @@ MonoBehaviour:
                 m_StringArgument: 
                 m_BoolArgument: 0
               m_CallState: 2
-        OnOriginalUpdate:
+        <OriginalUpdated>k__BackingField:
           m_PersistentCalls:
             m_Calls: []
-        OnMaxUpdate:
+        <MaxUpdated>k__BackingField:
           m_PersistentCalls:
             m_Calls: []
         _currentValue: 2
@@ -412,13 +423,13 @@ MonoBehaviour:
     - rid: 2750516940464193536
       type: {class: CarriedMoney, ns: , asm: Assembly-CSharp}
       data:
-        OnCurrentUpdate:
+        <CurrentUpdated>k__BackingField:
           m_PersistentCalls:
             m_Calls: []
-        OnOriginalUpdate:
+        <OriginalUpdated>k__BackingField:
           m_PersistentCalls:
             m_Calls: []
-        OnMaxUpdate:
+        <MaxUpdated>k__BackingField:
           m_PersistentCalls:
             m_Calls: []
         _currentValue: 10

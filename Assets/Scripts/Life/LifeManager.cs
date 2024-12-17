@@ -11,9 +11,9 @@ public class LifeManager : MonoBehaviour
         LifeAmount.CurrentValue--;
     }
 
-    void OnLifeChanged(int oldVal, int newVal)
+    void OnLifeChanged(int oldVal, Stat<int> health)
     {
-        if(newVal <=0)
+        if(health.CurrentValue <=0)
             GameManager.Instance.TransitionToState(typeof(GameOver));
 
     }
@@ -21,13 +21,13 @@ public class LifeManager : MonoBehaviour
     void OnEnable()
     {
         _endPoint.EnemyReached.AddListener(OnEndPointReached);
-        LifeAmount.OnCurrentUpdate.AddListener(OnLifeChanged);
+        LifeAmount.CurrentUpdated.AddListener(OnLifeChanged);
     }
 
     void OnDisable()
     {
         _endPoint.EnemyReached.RemoveListener(OnEndPointReached);
-        LifeAmount.OnCurrentUpdate.RemoveListener(OnLifeChanged);
+        LifeAmount.CurrentUpdated.RemoveListener(OnLifeChanged);
 
     }
 }

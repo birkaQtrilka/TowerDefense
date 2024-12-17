@@ -6,24 +6,24 @@ public class Enemy : MonoBehaviour
 {
     public UnityEvent<Enemy> OnDeath;
     [SerializeField] StatsContainer _stats;
-    IMover _walker;
+    //IMover _walker;
 
     Health _health;
 
     void Awake()
     {
-        _walker = GetComponent<IMover>();
+        //_walker = GetComponent<IMover>();
         _health = _stats.GetStat<Health>();
     }
 
     void OnEnable()
     {
-        _health.OnCurrentUpdate.AddListener(CheckForDeath);    
+        _health.CurrentUpdated.AddListener(CheckForDeath);    
     }
 
     void OnDisable()
     {
-        _health.OnCurrentUpdate.RemoveListener(CheckForDeath);
+        _health.CurrentUpdated.RemoveListener(CheckForDeath);
     }
 
     public T GetStat<T>()where T : Stat => _stats.GetStat<T>(); 
@@ -33,9 +33,9 @@ public class Enemy : MonoBehaviour
         return _health;
     }
 
-    void CheckForDeath(int prevHp,int hp)
+    void CheckForDeath(int prevHp, Stat<int> health)
     {
-        if(hp == 0)
+        if(health.CurrentValue == 0)
         {
             OnDeath?.Invoke(this);
             Destroy(gameObject);

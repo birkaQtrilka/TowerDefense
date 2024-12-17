@@ -7,6 +7,7 @@ public class Store : MonoBehaviour
     [SerializeField] List<StoreSlot> _slots;
     [field: SerializeField] public int Money { get; private set; }
     [SerializeField] TowerDataUI _ui;
+    [SerializeField] TowerPlacer _towerPlacer;
 
     public static Store Instance { get; private set; }
 
@@ -33,7 +34,7 @@ public class Store : MonoBehaviour
     void OnDisable()
     {
         EventBus<TryBuy>.Event += BuyResponse;
-        TowerPlacer.Instance.TowerPlaced -= OnTowerPlaced;
+        TowerPlacer.TowerPlaced -= OnTowerPlaced;
 
         foreach (var slot in _slots)
         {
@@ -51,8 +52,8 @@ public class Store : MonoBehaviour
     {
         if (data.Price <= Money)
         {
-            TowerPlacer.Instance.SelectTower(data);
-            TowerPlacer.Instance.TowerPlaced += OnTowerPlaced;
+            _towerPlacer.SelectTower(data);
+            TowerPlacer.TowerPlaced += OnTowerPlaced;
         }
     }
 

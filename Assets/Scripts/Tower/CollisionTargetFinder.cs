@@ -18,9 +18,9 @@ public class CollisionTargetFinder : TargetFinder
     }
     
     //adapter for stat value event signature
-    public void SetRange(float oldVal, float currVal)
+    public void SetRange(float oldVal, Stat<float> range)
     {
-        Range = currVal;
+        Range = range.CurrentValue;
     }
 
     public override Transform GetSingleTarget()
@@ -41,12 +41,14 @@ public class CollisionTargetFinder : TargetFinder
         if(_targets.Peek() == null) 
             _targets.Dequeue();
     }
+
     void OnTriggerExit(Collider other)
     {
+        if (!other.CompareTag("Enemy")) return;
+
         if (_targets.Count != 0 && _targets.Peek() == null)
             _targets.Dequeue();
 
-        if (!other.CompareTag("Enemy")) return;
         Debug.Log("exited " + other.gameObject);
 
         _targets.Dequeue();

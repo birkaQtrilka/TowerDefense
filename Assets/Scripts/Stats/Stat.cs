@@ -5,9 +5,9 @@ using UnityEngine.Events;
 public abstract class Stat<T> : Stat
 {
     //previous and current
-    [EventFoldout] public UnityEvent<T,T> OnCurrentUpdate;
-    [EventFoldout] public UnityEvent<T,T> OnOriginalUpdate;
-    [EventFoldout] public UnityEvent<T,T> OnMaxUpdate;
+    [EventFoldout][field: SerializeField] public UnityEvent<T,Stat<T>> CurrentUpdated { get; private set; }
+    [EventFoldout][field: SerializeField] public UnityEvent<T, Stat<T>> OriginalUpdated { get; private set; }
+    [EventFoldout][field: SerializeField] public UnityEvent<T, Stat<T>> MaxUpdated { get; private set; }
 
     [SerializeField] T _currentValue; 
     [SerializeField] T _originalValue; 
@@ -24,7 +24,7 @@ public abstract class Stat<T> : Stat
             OnCurrentValueSet(ref value);
             var copy = _currentValue;
             _currentValue = value;
-            OnCurrentUpdate?.Invoke(copy, value);
+            CurrentUpdated?.Invoke(copy, this);
         }
     }
 
@@ -40,7 +40,7 @@ public abstract class Stat<T> : Stat
             OnOriginalValueSet(ref value);
             var copy = _originalValue;
             _originalValue = value;
-            OnOriginalUpdate?.Invoke(copy, value);
+            OriginalUpdated?.Invoke(copy, this);
         }
     }
 
@@ -53,11 +53,10 @@ public abstract class Stat<T> : Stat
         }
         set
         {
-
             OnMaxValueSet(ref value);
             var copy = _maxValue;
             _maxValue = value;
-            OnMaxUpdate?.Invoke(copy, value);
+            MaxUpdated?.Invoke(copy, this);
         }
     }
 

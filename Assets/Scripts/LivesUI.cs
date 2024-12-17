@@ -5,26 +5,21 @@ public class LivesUI : MonoBehaviour
 {
     [SerializeField] LifeManager _lifeManager;
     [SerializeField] Text _textMesh;
-    Health _lives;
 
-    void Awake()
-    {
-        _lives = _lifeManager.LifeAmount; 
-    }
 
     void OnEnable()
     {
-        _lives.OnCurrentUpdate.AddListener(UpdateVisual);
-        UpdateVisual(0, 0);
+        _lifeManager.LifeAmount.CurrentUpdated.AddListener(UpdateVisual);
+        UpdateVisual(0, _lifeManager.LifeAmount);
     }
 
     void OnDisable()
     {
-        _lives.OnCurrentUpdate.RemoveListener(UpdateVisual);
+        _lifeManager.LifeAmount.CurrentUpdated.RemoveListener(UpdateVisual);
     }
 
-    public void UpdateVisual(int old, int newVal)
+    public void UpdateVisual(int old, Stat<int> lives)
     {
-        _textMesh.text = $"{_lives.CurrentValue}/{_lives.MaxValue}";
+        _textMesh.text = $"{lives.CurrentValue}/{lives.MaxValue}";
     }
 }

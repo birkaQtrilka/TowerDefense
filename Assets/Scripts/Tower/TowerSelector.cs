@@ -69,7 +69,7 @@ public class TowerSelector : MonoBehaviour
         }
     }
     //same issue as before, upgrader destroys tower, so I can't deselect
-    void Deselect()
+    public void Deselect()
     {
         if (_currentSelection != null)
         {

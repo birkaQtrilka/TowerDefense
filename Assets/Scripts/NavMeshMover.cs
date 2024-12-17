@@ -25,9 +25,9 @@ public class NavMeshMover : MonoBehaviour, IMover
     }
 
     //to adapt to OnValueChanged from stat
-    public void SetMoveSpeed(float previousVal, float currVal)
+    public void SetMoveSpeed(float previousVal, Stat<float> speed)
     {
-        SetMoveSpeed(currVal);
+        SetMoveSpeed(speed.CurrentValue);
     }
 
     public void MoveToDestination()

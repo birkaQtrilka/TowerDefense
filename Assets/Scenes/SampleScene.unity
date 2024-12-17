@@ -14705,7 +14705,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Store>k__BackingField: {fileID: 1255531354}
   <EnemySpawner>k__BackingField: {fileID: 1668396789}
-  <GameOverUI>k__BackingField: {fileID: 0}
+  <GameOverUI>k__BackingField: {fileID: 7381054960045216350}
+  <TowerSelector>k__BackingField: {fileID: 561305723}
+  <TowerPlacer>k__BackingField: {fileID: 960855366}
 --- !u!4 &960855365
 Transform:
   m_ObjectHideFlags: 0
@@ -20446,6 +20448,7 @@ MonoBehaviour:
   - {fileID: 2985777817935100334}
   <Money>k__BackingField: 30
   _ui: {fileID: 1084802216}
+  _towerPlacer: {fileID: 960855366}
 --- !u!1001 &1258832334
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22027,13 +22030,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <LifeAmount>k__BackingField:
-    OnCurrentUpdate:
+    <CurrentUpdated>k__BackingField:
       m_PersistentCalls:
         m_Calls: []
-    OnOriginalUpdate:
+    <OriginalUpdated>k__BackingField:
       m_PersistentCalls:
         m_Calls: []
-    OnMaxUpdate:
+    <MaxUpdated>k__BackingField:
       m_PersistentCalls:
         m_Calls: []
     _currentValue: 5
@@ -37320,7 +37323,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &7381054960033929473
 GameObject:
   m_ObjectHideFlags: 0

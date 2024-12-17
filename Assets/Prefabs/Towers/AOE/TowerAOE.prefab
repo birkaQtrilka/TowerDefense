@@ -417,13 +417,13 @@ MonoBehaviour:
     - rid: 2750516902491324417
       type: {class: Speed, ns: , asm: Assembly-CSharp}
       data:
-        OnCurrentUpdate:
+        <CurrentUpdated>k__BackingField:
           m_PersistentCalls:
             m_Calls: []
-        OnOriginalUpdate:
+        <OriginalUpdated>k__BackingField:
           m_PersistentCalls:
             m_Calls: []
-        OnMaxUpdate:
+        <MaxUpdated>k__BackingField:
           m_PersistentCalls:
             m_Calls: []
         _currentValue: 1
@@ -432,7 +432,7 @@ MonoBehaviour:
     - rid: 7793709330191876097
       type: {class: Range, ns: Assets.Scripts.Stats, asm: Assembly-CSharp}
       data:
-        OnCurrentUpdate:
+        <CurrentUpdated>k__BackingField:
           m_PersistentCalls:
             m_Calls:
             - m_Target: {fileID: 4754223096699535321}
@@ -447,10 +447,10 @@ MonoBehaviour:
                 m_StringArgument: 
                 m_BoolArgument: 0
               m_CallState: 2
-        OnOriginalUpdate:
+        <OriginalUpdated>k__BackingField:
           m_PersistentCalls:
             m_Calls: []
-        OnMaxUpdate:
+        <MaxUpdated>k__BackingField:
           m_PersistentCalls:
             m_Calls: []
         _currentValue: 1
