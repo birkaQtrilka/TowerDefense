@@ -13,11 +13,13 @@ MonoBehaviour:
   m_Name: Canon
   m_EditorClassIdentifier: 
   <Name>k__BackingField: Canon
-  <Prefab>k__BackingField: {fileID: 6293539212661847513, guid: d5ef51de35898d344b1271b7fda90cf1,
-    type: 3}
   <Price>k__BackingField: 10
   <StoreSlotImage>k__BackingField: {fileID: 21300000, guid: 327e0f38e31393e428e5e9ee22af6f3b,
     type: 3}
   <SelectionImage>k__BackingField: {fileID: 21300000, guid: 327e0f38e31393e428e5e9ee22af6f3b,
     type: 3}
   <Description>k__BackingField: Shoots a normal canon ball that does high damage
+  <UpgradeList>k__BackingField:
+  - {fileID: 6293539212661847513, guid: d5ef51de35898d344b1271b7fda90cf1, type: 3}
+  - {fileID: 7335630911781318914, guid: b305aec6b6e76674fb3b872f44580441, type: 3}
+  - {fileID: 6442778146112781541, guid: e3d556df749271545a9a64c201541218, type: 3}

@@ -14,7 +14,7 @@ public struct EnemyWave //should it be a scriptable object?
     }
 
     [SerializeField] EnemySet[] _enemySets;
-    [field: SerializeField] public float Pause { get; private set; }
+    //[field: SerializeField] public float Pause { get; private set; }
     //public readonly List<Enemy> GetEnemies()
     //{
     //    List<Enemy> list = new();

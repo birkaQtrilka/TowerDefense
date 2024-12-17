@@ -2,34 +2,32 @@ using UnityEngine;
 
 public class LifeManager : MonoBehaviour
 {
-	[SerializeField] int _lifeAmount = 3;
+	[field: SerializeField] public Health LifeAmount { get; private set; }
 	[SerializeField] EndPoint _endPoint;
 
 
-	public int LifeAmount
-	{
-		get { return _lifeAmount; }
-		set { _lifeAmount = value; }
-	}
-
     void OnEndPointReached(Enemy enemy)
     {
-        _lifeAmount--;
+        LifeAmount.CurrentValue--;
+    }
 
-        if (_lifeAmount <= 0)
-        {
-            GameManager.Instance.DoGameOver();
-        }
+    void OnLifeChanged(int oldVal, int newVal)
+    {
+        if(newVal <=0)
+            GameManager.Instance.TransitionToState(typeof(GameOver));
+
     }
 
     void OnEnable()
     {
-        _endPoint.EnemyReached.AddListener(OnEndPointReached);    
+        _endPoint.EnemyReached.AddListener(OnEndPointReached);
+        LifeAmount.OnCurrentUpdate.AddListener(OnLifeChanged);
     }
 
     void OnDisable()
     {
         _endPoint.EnemyReached.RemoveListener(OnEndPointReached);
+        LifeAmount.OnCurrentUpdate.RemoveListener(OnLifeChanged);
 
     }
 }

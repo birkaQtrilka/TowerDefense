@@ -11,7 +11,7 @@ PrefabInstance:
     - target: {fileID: 4172687333478295140, guid: d5ef51de35898d344b1271b7fda90cf1,
         type: 3}
       propertyPath: m_Name
-      value: TowerAOE_Lvl2 Variant
+      value: TowerAOE_Lvl2
       objectReference: {fileID: 0}
     - target: {fileID: 5925813610796045428, guid: d5ef51de35898d344b1271b7fda90cf1,
         type: 3}
@@ -76,7 +76,7 @@ PrefabInstance:
     - target: {fileID: 6293539212661847513, guid: d5ef51de35898d344b1271b7fda90cf1,
         type: 3}
       propertyPath: managedReferences[2750516902491324417]._currentValue
-      value: 0.8
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 6293539212661847513, guid: d5ef51de35898d344b1271b7fda90cf1,
         type: 3}
@@ -86,7 +86,7 @@ PrefabInstance:
     - target: {fileID: 6293539212661847513, guid: d5ef51de35898d344b1271b7fda90cf1,
         type: 3}
       propertyPath: managedReferences[2750516902491324417]._originalValue
-      value: 0.8
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 6293539212661847513, guid: d5ef51de35898d344b1271b7fda90cf1,
         type: 3}

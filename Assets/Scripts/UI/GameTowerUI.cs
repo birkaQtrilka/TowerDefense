@@ -12,6 +12,7 @@ public class GameTowerUI : MonoBehaviour
     [SerializeField] Text _nameText;
     [SerializeField] Text _priceText;
     [SerializeField] Button _upgradeBtn;
+    [SerializeField] Button _sellBtn;
 
     TowerUpgrader _currUpgrader;
 
@@ -42,6 +43,8 @@ public class GameTowerUI : MonoBehaviour
 
         _upgradeBtn.onClick.RemoveAllListeners();
         _upgradeBtn.onClick.AddListener(UpgradeTower);
+        _sellBtn.onClick.RemoveAllListeners();
+        _sellBtn.onClick.AddListener(SellTower);
     }
 
     public void UpgradeTower()
@@ -49,24 +52,30 @@ public class GameTowerUI : MonoBehaviour
         _currUpgrader.DoUpgrade();
     }
 
-    void OnUpgrade(TowerUpgraded evnt)
+    void OnUpgrade(TowerUpgrader old, TowerUpgrader current)
     {
-        if(_currUpgrader == evnt.OldUpgrader)
+        if(_currUpgrader == old)
         {
-            _currUpgrader = evnt.CurrentUpgrader;
+            _currUpgrader = current;
             UpdateVisual(_currUpgrader);
         }
     }
 
+    public void SellTower()
+    {
+        _currUpgrader.GetComponent<TowerSeller>().Sell();
+    }
+
     void OnEnable()
     {
-        EventBus<TowerUpgraded>.Event += OnUpgrade;
+        TowerUpgrader.Upgraded += OnUpgrade;
     }
 
     void OnDisable()
     {
-        EventBus<TowerUpgraded>.Event -= OnUpgrade;
+        TowerUpgrader.Upgraded -= OnUpgrade;
         _upgradeBtn.onClick.RemoveAllListeners();
+        _sellBtn.onClick.RemoveAllListeners();
 
     }
 

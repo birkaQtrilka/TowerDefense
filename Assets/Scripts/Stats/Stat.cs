@@ -22,10 +22,12 @@ public abstract class Stat<T> : Stat
         set 
         {
             OnCurrentValueSet(ref value);
-            OnCurrentUpdate?.Invoke(_currentValue, value);
+            var copy = _currentValue;
             _currentValue = value;
+            OnCurrentUpdate?.Invoke(copy, value);
         }
     }
+
     public T OriginalValue
     {
         get
@@ -36,10 +38,12 @@ public abstract class Stat<T> : Stat
         set
         {
             OnOriginalValueSet(ref value);
-            OnOriginalUpdate?.Invoke(_originalValue, value);
+            var copy = _originalValue;
             _originalValue = value;
+            OnOriginalUpdate?.Invoke(copy, value);
         }
     }
+
     public T MaxValue
     {
         get
@@ -51,8 +55,9 @@ public abstract class Stat<T> : Stat
         {
 
             OnMaxValueSet(ref value);
-            OnMaxUpdate?.Invoke(_maxValue, value);
+            var copy = _maxValue;
             _maxValue = value;
+            OnMaxUpdate?.Invoke(copy, value);
         }
     }
 

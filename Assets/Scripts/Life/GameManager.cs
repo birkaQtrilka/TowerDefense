@@ -11,7 +11,8 @@ public class GameManager : MonoBehaviour, IStateMachine
 
     [field: SerializeField] public Store Store { get; private set; }
     [field: SerializeField] public EnemySpawner EnemySpawner { get; private set; }
-    
+    [field: SerializeField] public GameOverUI GameOverUI { get; private set; }
+
     public void TransitionToState(Type state)
     {
         CurrentState.OnExit();
@@ -36,7 +37,8 @@ public class GameManager : MonoBehaviour, IStateMachine
         _states = new()
         {
             { typeof(Build), new Build(this)},
-            { typeof(Defend), new Defend(this)}
+            { typeof(Defend), new Defend(this)},
+            { typeof(GameOver), new GameOver(this)},
         };
 
         
@@ -46,11 +48,6 @@ public class GameManager : MonoBehaviour, IStateMachine
     {
         CurrentState = _states[typeof(Build)];
         CurrentState.OnEnter();
-    }
-
-    public void DoGameOver()
-    {
-        Debug.Log("GameOver");
     }
 
     public void Update()
@@ -110,6 +107,29 @@ public class Defend : State<GameManager>
 
     public override void OnExit()
     {
+    }
+
+    public override void Update()
+    {
+
+    }
+}
+
+public class GameOver : State<GameManager>
+{
+    public GameOver(GameManager c) : base(c) { }
+
+    public override void OnEnter()
+    {
+        Time.timeScale = 0;
+        context.GameOverUI.gameObject.SetActive(true);
+
+    }
+
+    public override void OnExit()
+    {
+        context.GameOverUI.gameObject.SetActive(false);
+
     }
 
     public override void Update()

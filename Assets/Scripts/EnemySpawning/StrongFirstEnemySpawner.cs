@@ -5,24 +5,19 @@ using UnityEngine;
 
 public class StrongFirstEnemySpawner : EnemySpawner
 {
-    protected override IEnumerator SpawnWaves()
+    protected override IEnumerator SpawnWave(EnemyWave wave)
     {
-        foreach (EnemyWave wave in waves)
+        var sets = wave.GetEnemySetsCopy();
+        SortSets(sets);
+
+        foreach (EnemyWave.EnemySet set in sets)
         {
-            var sets = wave.GetEnemySetsCopy();
-            SortSets(sets);
-
-            foreach (EnemyWave.EnemySet set in sets)
+            for (int i = 0; i < set.Amount; i++)
             {
-                for (int i = 0; i < set.Amount; i++)
-                {
-                    SpawnEnemy(set.EnemyPrefab);
-                    yield return new WaitForSeconds(set.Pause);
-                }
+                SpawnEnemy(set.EnemyPrefab);
+                yield return new WaitForSeconds(set.Pause);
             }
-            yield return new WaitForSeconds(wave.Pause);
         }
-
     }
 
     void SortSets(EnemyWave.EnemySet[] sets)

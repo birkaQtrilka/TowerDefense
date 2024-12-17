@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -18,13 +19,14 @@ public class TowerSelector : MonoBehaviour
 
     void OnEnable()
     {
-        EventBus<TowerUpgraded>.Event += OnUpgrade;
+        TowerUpgrader.Upgraded += OnUpgrade;
+        TowerSeller.Sold += OnSell;
     }
 
     void OnDisable()
     {
-        EventBus<TowerUpgraded>.Event -= OnUpgrade;
-
+        TowerUpgrader.Upgraded -= OnUpgrade;
+        TowerSeller.Sold -= OnSell;
     }
 
     void Update()
@@ -82,13 +84,22 @@ public class TowerSelector : MonoBehaviour
         _currentSelection.Select();
     }
 
-    void OnUpgrade(TowerUpgraded evnt)
+    void OnUpgrade(TowerUpgrader old, TowerUpgrader current)
     {
-        SelectionVisual oldVisual = evnt.OldUpgrader.GetComponent<SelectionVisual>();
+        SelectionVisual oldVisual = old.GetComponent<SelectionVisual>();
         if (oldVisual == _currentSelection)
         {
             Deselect();
-            Select(evnt.CurrentUpgrader.GetComponent<SelectionVisual>());
+            Select(current.GetComponent<SelectionVisual>());
+        }
+    }
+
+    void OnSell(Tower tower)
+    {
+        SelectionVisual selection = tower.GetComponent<SelectionVisual>();
+        if (selection == _currentSelection)
+        {
+            Deselect();
         }
     }
 }

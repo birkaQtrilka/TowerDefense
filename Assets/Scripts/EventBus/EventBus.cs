@@ -12,7 +12,7 @@ public class EventBus<T> where T : IEvent
 
 public interface IEvent { }
 
-public readonly struct MoneySpent : IEvent
+public readonly struct MoneySpent : IEvent//can get rid of this and make it a store event
 {
     public int Amount { get; }
     public int NewTotal { get; }
@@ -35,15 +35,16 @@ public readonly struct TryBuy : IEvent
     }
 }
 
-public readonly struct TowerUpgraded : IEvent
-{
-    public TowerUpgrader OldUpgrader { get; }
-    public TowerUpgrader CurrentUpgrader { get; }
 
-    public TowerUpgraded(TowerUpgrader oldUpgrader, TowerUpgrader currentUpgrader)
-    {
-        OldUpgrader = oldUpgrader;
-        CurrentUpgrader = currentUpgrader;
-    }
+//public readonly struct TowerUpgraded : IEvent
+//{
+//    public TowerUpgrader OldUpgrader { get; }
+//    public TowerUpgrader CurrentUpgrader { get; }
+
+//    public TowerUpgraded(TowerUpgrader oldUpgrader, TowerUpgrader currentUpgrader)
+//    {
+//        OldUpgrader = oldUpgrader;
+//        CurrentUpgrader = currentUpgrader;
+//    }
     
-}
+//}

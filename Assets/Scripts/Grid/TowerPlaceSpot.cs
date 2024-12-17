@@ -11,21 +11,21 @@ public class TowerPlaceSpot : MonoBehaviour
 
     void OnEnable()
     {
-        EventBus<TowerUpgraded>.Event += OnTowerUpgraded;
-    }
-
-    void OnTowerUpgraded(TowerUpgraded evnt)
-    {
-        if(evnt.OldUpgrader.Tower == HoldingTower)
-        {
-            PlaceTower(evnt.CurrentUpgrader.Tower);
-        }
+        TowerUpgrader.Upgraded += OnTowerUpgraded;
     }
 
     void OnDisable()
     {
-        EventBus<TowerUpgraded>.Event -= OnTowerUpgraded;
+        TowerUpgrader.Upgraded -= OnTowerUpgraded;
 
+    }
+
+    void OnTowerUpgraded(TowerUpgrader old, TowerUpgrader current)
+    {
+        if (old.Tower == HoldingTower)
+        {
+            PlaceTower(current.Tower);
+        }
     }
 
     public void PlaceTower(Tower tower)

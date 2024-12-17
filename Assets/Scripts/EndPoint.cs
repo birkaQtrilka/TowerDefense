@@ -10,6 +10,7 @@ public class EndPoint : MonoBehaviour
     {
         var enemy = other.GetComponentInParent<Enemy>();
         if (enemy == null)return;
+        EnemyReached.Invoke(enemy);
         Destroy(enemy.gameObject);
 
     }

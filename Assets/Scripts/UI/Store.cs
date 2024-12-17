@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class Store : MonoBehaviour
 {
+
     [SerializeField] List<StoreSlot> _slots;
     [field: SerializeField] public int Money { get; private set; }
     [SerializeField] TowerDataUI _ui;
@@ -27,17 +28,6 @@ public class Store : MonoBehaviour
             slot.Hover += OnSlotHover;
         }
 
-    }
-
-    void BuyResponse(TryBuy tryBuy)
-    {
-        if (tryBuy.Amount <= Money)
-        {
-            tryBuy.OnAllow();
-            Money -= tryBuy.Amount;
-            EventBus<MoneySpent>.Publish(new MoneySpent(tryBuy.Amount, Money));
-
-        }
     }
 
     void OnDisable()
@@ -66,12 +56,25 @@ public class Store : MonoBehaviour
         }
     }
 
-
-
     void OnTowerPlaced(TowerData towerData)
     {
         Money -= towerData.Price;
         EventBus<MoneySpent>.Publish(new MoneySpent(towerData.Price, Money));
     }
+    
+    void BuyResponse(TryBuy tryBuy)
+    {
+        if (tryBuy.Amount <= Money)
+        {
+            tryBuy.OnAllow();
+            Money -= tryBuy.Amount;
+            EventBus<MoneySpent>.Publish(new MoneySpent(tryBuy.Amount, Money));
 
+        }
+    }
+
+    public void Sell(TowerSeller seller)
+    {
+        Money -= seller.SellPrice;
+    }
 }

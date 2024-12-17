@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -6,6 +7,8 @@ public class TowerUpgrader : MonoBehaviour
 {
     //previous upgrade, current upgrade
     //[field: SerializeField] public UnityEvent<TowerUpgrader, TowerUpgrader> Upgraded { get; private set; }
+
+    public static event Action<TowerUpgrader, TowerUpgrader> Upgraded;
 
     //upgrade data
     [field: SerializeField] public Sprite UiImage {  get; private set; }
@@ -38,8 +41,7 @@ public class TowerUpgrader : MonoBehaviour
         var nextUpgrader = upgradedInstance.GetComponent<TowerUpgrader>();
 
         nextUpgrader.Init(_data, _currentUpdate);
-
-        EventBus<TowerUpgraded>.Publish(new TowerUpgraded(this, nextUpgrader));
+        Upgraded?.Invoke(this, nextUpgrader);
         Destroy(_instance.gameObject);
     }
 }
