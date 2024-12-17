@@ -18,7 +18,7 @@ public class TowerDataUI : MonoBehaviour
         _nameText.text = data.Name;
 
         _fireSpeedText.text = tower.Stats.GetStat<Speed>().OriginalValue.ToString();
-        Damage towerDamage = tower.BulletPrefab.GetComponent<Damager>().Damage;
+        Damage towerDamage = tower.BulletPrefab.GetComponent<BulletDamager>().Damage;
         _damageText.text = towerDamage.OriginalValue.ToString();
         _damageTypeText.text = towerDamage.Type.ToString();
         _rangeText.text = tower.GetComponent<TargetFinder>().Range.ToString();

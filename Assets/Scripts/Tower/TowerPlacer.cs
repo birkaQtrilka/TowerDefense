@@ -74,8 +74,12 @@ public class TowerPlacer : MonoBehaviour
 
         if (!clicked || selection.HoldingTower != null) return;
         
-        selection.PlaceTower(_currentSelection);
+        Tower inst = Instantiate(_currentSelection.Prefab);
+        inst.GetComponent<TowerUpgrader>().Init(_currentSelection, currentIndex: 0);
+        selection.PlaceTower(inst);
+
         TowerPlaced?.Invoke(_currentSelection);
         Deselect();
     }
+
 }

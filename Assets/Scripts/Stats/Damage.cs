@@ -1,4 +1,4 @@
-
+[System.Serializable]
 public class Damage : Stat<int>
 {
     public DamageType Type;

@@ -3,7 +3,7 @@ using UnityEngine;
 [RequireComponent(typeof(Bullet))]
 public class BulletDamager : MonoBehaviour
 {
-    public int Damage;
+    public Damage Damage;
     
     Bullet _bullet;
     void Awake()
@@ -19,7 +19,10 @@ public class BulletDamager : MonoBehaviour
 
     void DoDamage(Tower sender, Enemy victim)
     {
-        //get tower damage stat
-        victim.GetHealth().CurrentValue -= Damage;
+        //get tower damage stat?
+
+        //CAN DO:
+        //if enemy is water type and tower damage is fire type, do no damage etc.
+        victim.GetHealth().CurrentValue -= Damage.CurrentValue;
     }
 }

@@ -15,6 +15,7 @@ public class Tower : MonoBehaviour//make it generic and accept scriptable object
     Speed _attackCooldown;
     float _currCooldown;
 
+
     void OnDrawGizmos()
     {
         Gizmos.DrawRay(transform.position, _aimer.GetAttackLook(null, _finder.GetAvailableTargets()) * Vector3.forward);    

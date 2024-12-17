@@ -3079,7 +3079,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6293539212661847513, guid: d5ef51de35898d344b1271b7fda90cf1,
         type: 3}
+      propertyPath: managedReferences[2750516902491324417]._maxValue
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6293539212661847513, guid: d5ef51de35898d344b1271b7fda90cf1,
+        type: 3}
       propertyPath: managedReferences[2750516902491324417]._currentValue
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6293539212661847513, guid: d5ef51de35898d344b1271b7fda90cf1,
+        type: 3}
+      propertyPath: managedReferences[2750516902491324417]._originalValue
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -3967,7 +3977,7 @@ MonoBehaviour:
   _pathingManager: {fileID: 244097226}
   waves:
   - _enemySets:
-    - Amount: 1
+    - Amount: 10
       EnemyPrefab: {fileID: 8663661722552875389, guid: e3d0a31ba1ce11840b6151cbd8d7215b,
         type: 3}
       Pause: 0.2
@@ -5489,6 +5499,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TowerSlow
+      objectReference: {fileID: 0}
+    - target: {fileID: 4172687333478295140, guid: d5ef51de35898d344b1271b7fda90cf1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5925813610796045428, guid: d5ef51de35898d344b1271b7fda90cf1,
         type: 3}
@@ -15633,6 +15648,54 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1088200146}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1093739245
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1093739247}
+  - component: {fileID: 1093739246}
+  m_Layer: 0
+  m_Name: TowerSelector
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1093739246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1093739245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64e0b785f8b36c2459dc8289a89b96c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sphereCastRadius: 1
+  _selectionLayer:
+    serializedVersion: 2
+    m_Bits: 128
+--- !u!4 &1093739247
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1093739245}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.8000002, y: 0.5100002, z: 7.42}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1096110621
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -32722,3 +32785,4 @@ SceneRoots:
   - {fileID: 1329058984}
   - {fileID: 228242105}
   - {fileID: 393975604}
+  - {fileID: 1093739247}

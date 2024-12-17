@@ -359,7 +359,8 @@ GameObject:
   - component: {fileID: 5925813610796045428}
   - component: {fileID: 6293539212661847513}
   - component: {fileID: 718480315369747637}
-  - component: {fileID: 7085490069867422474}
+  - component: {fileID: 900849768429156521}
+  - component: {fileID: 1015125679411297793}
   m_Layer: 7
   m_Name: TowerAOE
   m_TagString: Untagged
@@ -403,6 +404,7 @@ MonoBehaviour:
   <Stats>k__BackingField:
     stats:
     - rid: 2750516902491324417
+    - rid: 7793709330191876097
   <BulletPrefab>k__BackingField: {fileID: 5948655671147615617, guid: eae1e1be43f422e419cf5dec705a8bd9,
     type: 3}
   _finder: {fileID: 4754223096699535321}
@@ -423,9 +425,36 @@ MonoBehaviour:
         OnMaxUpdate:
           m_PersistentCalls:
             m_Calls: []
-        _currentValue: 1.07
-        _originalValue: 0
-        _maxValue: 0
+        _currentValue: 1
+        _originalValue: 1
+        _maxValue: 1
+    - rid: 7793709330191876097
+      type: {class: Range, ns: Assets.Scripts.Stats, asm: Assembly-CSharp}
+      data:
+        OnCurrentUpdate:
+          m_PersistentCalls:
+            m_Calls:
+            - m_Target: {fileID: 4754223096699535321}
+              m_TargetAssemblyTypeName: CollisionTargetFinder, Assembly-CSharp
+              m_MethodName: SetRange
+              m_Mode: 0
+              m_Arguments:
+                m_ObjectArgument: {fileID: 0}
+                m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+                m_IntArgument: 0
+                m_FloatArgument: 0
+                m_StringArgument: 
+                m_BoolArgument: 0
+              m_CallState: 2
+        OnOriginalUpdate:
+          m_PersistentCalls:
+            m_Calls: []
+        OnMaxUpdate:
+          m_PersistentCalls:
+            m_Calls: []
+        _currentValue: 1
+        _originalValue: 1
+        _maxValue: 1
 --- !u!114 &718480315369747637
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -438,7 +467,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb6dbc56eaf06d44d84c9cde8a6d8143, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &7085490069867422474
+--- !u!114 &900849768429156521
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -447,12 +476,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 4172687333478295140}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dec02a5472f98714f8aea0c6ad10b0bd, type: 3}
+  m_Script: {fileID: 11500000, guid: f4de9f51c5582c64fac94fdf487b4a23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _visual: {fileID: 6272082485911774744}
-  _textMesh: {fileID: 2063049548539899835}
-  _tower: {fileID: 6293539212661847513}
+--- !u!114 &1015125679411297793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4172687333478295140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11230938d7b1b5e4588273ba244cf69a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <UiImage>k__BackingField: {fileID: 21300000, guid: fee2e2cbf1e188141b18e4c7ff2ca4e0,
+    type: 3}
+  <UpgradeCost>k__BackingField: 10
 --- !u!1 &4642487458607368464
 GameObject:
   m_ObjectHideFlags: 0
@@ -548,7 +589,6 @@ GameObject:
   - component: {fileID: 6276319220525079867}
   - component: {fileID: 7214340830481043198}
   - component: {fileID: 131312127617103339}
-  - component: {fileID: 2791932042091252209}
   m_Layer: 7
   m_Name: SelectionVisual
   m_TagString: Untagged
@@ -622,28 +662,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &2791932042091252209
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6272082485911774744}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &6406492389523646693
 GameObject:
   m_ObjectHideFlags: 0

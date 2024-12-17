@@ -194,7 +194,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5688caa9a54a6648acbaa6bd54a744f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _explosionRadius: 3
+  _explosionRadius: 1
 --- !u!114 &7741296912040777945
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -207,4 +207,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e2c635b9a97444498ee663b04fefd48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damage: 1
+  Damage:
+    OnCurrentUpdate:
+      m_PersistentCalls:
+        m_Calls: []
+    OnOriginalUpdate:
+      m_PersistentCalls:
+        m_Calls: []
+    OnMaxUpdate:
+      m_PersistentCalls:
+        m_Calls: []
+    _currentValue: 1
+    _originalValue: 1
+    _maxValue: 1
+    Type: 0

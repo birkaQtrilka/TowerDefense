@@ -23,3 +23,27 @@ public readonly struct MoneySpent : IEvent
     }
 }
 
+public readonly struct TryBuy : IEvent
+{
+    public int Amount { get; }
+    public Action OnAllow { get; }
+
+    public TryBuy(int amount, Action onAllow)
+    {
+        Amount = amount;
+        OnAllow = onAllow;
+    }
+}
+
+public readonly struct TowerUpgraded : IEvent
+{
+    public TowerUpgrader OldUpgrader { get; }
+    public TowerUpgrader CurrentUpgrader { get; }
+
+    public TowerUpgraded(TowerUpgrader oldUpgrader, TowerUpgrader currentUpgrader)
+    {
+        OldUpgrader = oldUpgrader;
+        CurrentUpgrader = currentUpgrader;
+    }
+    
+}

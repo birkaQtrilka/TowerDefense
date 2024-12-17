@@ -16,6 +16,12 @@ public class CollisionTargetFinder : TargetFinder
     {
         return _targets;
     }
+    
+    //adapter for stat value event signature
+    public void SetRange(float oldVal, float currVal)
+    {
+        Range = currVal;
+    }
 
     public override Transform GetSingleTarget()
     {

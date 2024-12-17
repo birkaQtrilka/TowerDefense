@@ -1,3 +1,5 @@
+using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,6 +10,14 @@ public class MoneyUI : MonoBehaviour
     void OnEnable()
     {
         EventBus<MoneySpent>.Event += OnMoneySpent;
+        StartCoroutine(WhenAllocated(() => UpdateVisual(Store.Instance.Money)));
+    }
+
+    IEnumerator WhenAllocated(Action action)
+    {
+        var condition = new WaitUntil(() => Store.Instance != null);
+        yield return condition;
+        action();
     }
 
     void OnDisable()
@@ -18,7 +28,11 @@ public class MoneyUI : MonoBehaviour
 
     void OnMoneySpent(MoneySpent moneySpent)
     {
-        _txtMesh.text = moneySpent.NewTotal.ToString();
+        UpdateVisual(moneySpent.NewTotal);
+    }
 
+    void UpdateVisual(int val)
+    {
+        _txtMesh.text = val.ToString();
     }
 }

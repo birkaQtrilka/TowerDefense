@@ -5,8 +5,8 @@ using UnityEngine.UI;
 [RequireComponent (typeof(Button))]
 public class StoreSlot : MonoBehaviour
 {
-    public event Action<TowerData> OnTryBuy;
-    public event Action<TowerData> OnSelection;
+    public event Action<TowerData> Clicked;
+    public event Action<TowerData> Hover;
 
     [SerializeField] TowerData _data;
     [SerializeField] Image _image;
@@ -56,11 +56,11 @@ public class StoreSlot : MonoBehaviour
 
     void OnBtnClick()
     {
-        OnTryBuy?.Invoke(_data);
+        Clicked?.Invoke(_data);
     }
 
     void OnMouseEnter()
     {
-        OnSelection?.Invoke(_data);
+        Hover?.Invoke(_data);
     }
 }

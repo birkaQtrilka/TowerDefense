@@ -8,9 +8,29 @@ public class TowerPlaceSpot : MonoBehaviour
 
     public Tower HoldingTower { get; private set; }
 
-    public void PlaceTower(TowerData data)
+
+    void OnEnable()
     {
-        HoldingTower = Instantiate(data.Prefab);
+        EventBus<TowerUpgraded>.Event += OnTowerUpgraded;
+    }
+
+    void OnTowerUpgraded(TowerUpgraded evnt)
+    {
+        if(evnt.OldUpgrader.Tower == HoldingTower)
+        {
+            PlaceTower(evnt.CurrentUpgrader.Tower);
+        }
+    }
+
+    void OnDisable()
+    {
+        EventBus<TowerUpgraded>.Event -= OnTowerUpgraded;
+
+    }
+
+    public void PlaceTower(Tower tower)
+    {
+        HoldingTower = tower;
         HoldingTower.transform.position = _placePos.position;
     }    
 
