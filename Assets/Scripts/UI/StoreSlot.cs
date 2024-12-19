@@ -10,6 +10,7 @@ public class StoreSlot : MonoBehaviour
 
     [SerializeField] TowerData _data;
     [SerializeField] Image _image;
+    [SerializeField] Image _notEnoughMoneyImg;
     Button _button;
 
     public TowerData Data
@@ -37,6 +38,11 @@ public class StoreSlot : MonoBehaviour
     void UpdateSlot()
     {
         _image.sprite = _data.StoreSlotImage;
+    }
+
+    public void CanBeBought(bool canBe)
+    {
+        _notEnoughMoneyImg.enabled = !canBe;
     }
 
     void OnEnable()

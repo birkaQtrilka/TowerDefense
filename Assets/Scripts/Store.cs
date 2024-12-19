@@ -1,11 +1,25 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Store : MonoBehaviour
 {
 
     [SerializeField] List<StoreSlot> _slots;
-    [field: SerializeField] public int Money { get; private set; }
+    [SerializeField] Button _startGameBtn;
+    [SerializeField] int _money = 50;
+    [SerializeField] public int Money 
+    {
+        get
+        {
+            return _money;
+        }
+        private set 
+        {
+            _money = value;
+            UpdateVisual();
+        }
+    }
     [SerializeField] TowerDataUI _ui;
     [SerializeField] TowerPlacer _towerPlacer;
 
@@ -25,22 +39,26 @@ public class Store : MonoBehaviour
 
         foreach (var slot in _slots)
         {
-            slot.Clicked += OnSlotSelect;
+            slot.Clicked += OnSlotPressed;
             slot.Hover += OnSlotHover;
         }
 
+        UpdateVisual();
+        _startGameBtn.gameObject.SetActive(true);
     }
 
     void OnDisable()
     {
-        EventBus<TryBuy>.Event += BuyResponse;
+        EventBus<TryBuy>.Event -= BuyResponse;
         TowerPlacer.TowerPlaced -= OnTowerPlaced;
 
         foreach (var slot in _slots)
         {
-            slot.Clicked -= OnSlotSelect;
+            slot.Clicked -= OnSlotPressed;
             slot.Hover -= OnSlotHover;
         }
+        _startGameBtn.gameObject.SetActive(false);
+
     }
 
     void OnSlotHover(TowerData data)
@@ -48,10 +66,12 @@ public class Store : MonoBehaviour
         _ui.UpdateVisual(data.Prefab, data);
     }
 
-    void OnSlotSelect(TowerData data)
+    void OnSlotPressed(TowerData data)
     {
         if (data.Price <= Money)
         {
+            TowerPlacer.TowerPlaced -= OnTowerPlaced;
+
             _towerPlacer.SelectTower(data);
             TowerPlacer.TowerPlaced += OnTowerPlaced;
         }
@@ -60,6 +80,7 @@ public class Store : MonoBehaviour
     void OnTowerPlaced(TowerData towerData)
     {
         Money -= towerData.Price;
+        TowerPlacer.TowerPlaced -= OnTowerPlaced;
         EventBus<MoneySpent>.Publish(new MoneySpent(towerData.Price, Money));
     }
     
@@ -77,5 +98,14 @@ public class Store : MonoBehaviour
     public void Sell(TowerSeller seller)
     {
         Money -= seller.SellPrice;
+    }
+
+    public void UpdateVisual()
+    {
+        if (!gameObject.activeInHierarchy) return;
+        foreach (var slot in _slots)
+        {
+            slot.CanBeBought(slot.Data.Price <= Money); 
+        }
     }
 }

@@ -21532,7 +21532,7 @@ MonoBehaviour:
   _slots:
   - {fileID: 477331970}
   - {fileID: 2985777817935100334}
-  <Money>k__BackingField: 30
+  <Money>k__BackingField: 100
   _ui: {fileID: 1084802216}
   _towerPlacer: {fileID: 960855366}
 --- !u!1001 &1258832334

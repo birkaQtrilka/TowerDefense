@@ -43,7 +43,16 @@ public class LevelsManager : MonoBehaviour
 
     void OnEnable()
     {
-        CurrLevel = SceneManager.GetActiveScene().buildIndex;    
+
+        string lvlName = SceneManager.GetActiveScene().name;
+        int i = 0;
+        for (; i < _levels.Length; i++)
+        {
+            if (_levels[i].Name == lvlName)
+                break;
+        }
+
+        CurrLevel = i;    
     }
 
     public void MarkNextLevelUnlocked()

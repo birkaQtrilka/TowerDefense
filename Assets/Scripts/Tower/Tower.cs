@@ -1,8 +1,11 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 [SelectionBase]
 public class Tower : MonoBehaviour//make it generic and accept scriptable objects?
 {
+    [SerializeField] UnityEvent _onTowerShoot;
+
     [field: SerializeField] public StatsContainer Stats { get; private set; }
 
     [field: SerializeField] public Bullet BulletPrefab {  get; private set; }
@@ -49,6 +52,8 @@ public class Tower : MonoBehaviour//make it generic and accept scriptable object
 
         bullet.Sender = this;
         bullet.Init();
+
+        _onTowerShoot?.Invoke();
     }
 
 }
