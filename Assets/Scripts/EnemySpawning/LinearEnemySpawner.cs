@@ -3,8 +3,6 @@ using UnityEngine;
 
 public class LinearEnemySpawner : EnemySpawner
 {
-    [SerializeField] bool _spawn;
-    
     protected override IEnumerator SpawnWave(EnemyWave wave)
     {
         foreach (EnemyWave.EnemySet set in wave.GetEnemySets())
@@ -18,12 +16,4 @@ public class LinearEnemySpawner : EnemySpawner
 
     }
 
-    private void Update()
-    {
-        if (_spawn)
-        {
-            _spawn = false;
-            RushNewWave();
-        }
-    }
 }

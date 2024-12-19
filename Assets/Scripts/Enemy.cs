@@ -5,6 +5,7 @@ using UnityEngine.Events;
 public class Enemy : MonoBehaviour
 {
     public UnityEvent<Enemy> OnDeath;
+    public UnityEvent<Enemy> OnDestroy;
     [SerializeField] StatsContainer _stats;
     //IMover _walker;
 
@@ -24,6 +25,7 @@ public class Enemy : MonoBehaviour
     void OnDisable()
     {
         _health.CurrentUpdated.RemoveListener(CheckForDeath);
+        OnDestroy?.Invoke(this);
     }
 
     public T GetStat<T>()where T : Stat => _stats.GetStat<T>(); 

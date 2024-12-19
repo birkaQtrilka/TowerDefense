@@ -346,6 +346,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnDestroy:
+    m_PersistentCalls:
+      m_Calls: []
   _stats:
     stats:
     - rid: 2750516791768776713
@@ -360,9 +363,9 @@ MonoBehaviour:
         <CurrentUpdated>k__BackingField:
           m_PersistentCalls:
             m_Calls:
-            - m_Target: {fileID: 8663661722552875389}
+            - m_Target: {fileID: 899166430820288069}
               m_TargetAssemblyTypeName: HpBar, Assembly-CSharp
-              m_MethodName: 
+              m_MethodName: UpdateBar
               m_Mode: 0
               m_Arguments:
                 m_ObjectArgument: {fileID: 0}

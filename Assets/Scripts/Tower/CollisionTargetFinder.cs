@@ -46,9 +46,6 @@ public class CollisionTargetFinder : TargetFinder
     {
         if (!other.CompareTag("Enemy")) return;
 
-        if (_targets.Count != 0 && _targets.Peek() == null)
-            _targets.Dequeue();
-
         Debug.Log("exited " + other.gameObject);
 
         _targets.Dequeue();

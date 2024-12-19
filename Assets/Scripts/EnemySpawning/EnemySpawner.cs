@@ -7,6 +7,8 @@ using UnityEngine.Events;
 
 public abstract class EnemySpawner : MonoBehaviour
 {
+    [field: SerializeField] public UnityEvent<EnemySpawner> WaveDone {  get; private set; }
+
     //curr, max
     [field: SerializeField] public UnityEvent<int, int> ValuesChanged { get; private set; }
 
@@ -26,16 +28,9 @@ public abstract class EnemySpawner : MonoBehaviour
     public void StartSpawning()
     {
         _cahcedStartPosition = pathingManager.GetStartPosition();
+
+        StopAllCoroutines();
         StartCoroutine(SpawnWavesCR());
-    }
-
-    public void RushNewWave()
-    {
-        if (currWave > waves.Length - 1) return;
-
-        currWaveRoutine = StartCoroutine(SpawnWave(waves[currWave]));
-        currWave++;
-        ValuesChanged?.Invoke(currWave, waves.Length);
     }
 
     //this decides the order and timing of enemyspawns within a wave
@@ -46,6 +41,7 @@ public abstract class EnemySpawner : MonoBehaviour
         Enemy enemy = Instantiate(prefab, _cahcedStartPosition, Quaternion.identity);
         _spawnedEnemies.Add(enemy);
         enemy.OnDeath.AddListener(OnEnemyDeath);
+        enemy.OnDestroy.AddListener(OnEnemyDeath);
         IMover walkingBehavior = enemy.GetComponent<IMover>();
 
         walkingBehavior.SetDestination(pathingManager.GetDestination());
@@ -56,19 +52,20 @@ public abstract class EnemySpawner : MonoBehaviour
     {
         _spawnedEnemies.Remove(enemy);
         enemy.OnDeath.RemoveListener(OnEnemyDeath);
+        enemy.OnDestroy.RemoveListener(OnEnemyDeath);
     }
 
     IEnumerator SpawnWavesCR()
     {
-        while(currWave < waves.Length)
-        {
-            RushNewWave();
-            yield return currWaveRoutine;
-            //yield return new WaitForSeconds(waves[currWave-1].Pause);
-        }
+        if (currWave > waves.Length - 1) yield break;
+
+        yield return SpawnWave(waves[currWave]);
+        currWave++;
+        ValuesChanged?.Invoke(currWave, waves.Length);
+
         yield return new WaitUntil(()=> _spawnedEnemies.Count == 0);
-        Debug.Log("enemy spawner transition");
-        GameManager.Instance.TransitionToState(typeof(GameOver));
+
+        WaveDone?.Invoke(this);
     }
 
 
