@@ -21,7 +21,7 @@ public class Slower : MonoBehaviour
     public void DoSlow(Tower sender, Enemy victim)
     {
         //get tower damage stat
-        var enemySpeed = victim.GetStat<Speed>();
+        var enemySpeed = victim.Speed;
 
         float slowVal = enemySpeed.OriginalValue - _slowAmount;
         if ( slowVal < enemySpeed.CurrentValue)

@@ -17,7 +17,7 @@ public class TowerSeller : MonoBehaviour
     {
         //CAN DO: 
         //ADD CanSell()
-        Store.Instance.Sell(this);
+        Store.Instance.AddMoney(SellPrice);
         Sold.Invoke(_tower);
         Destroy(gameObject);
     }

@@ -20,3 +20,24 @@ MonoBehaviour:
       Volume: 1
       Clip: {fileID: 8300000, guid: 45407806c88a8df43a300a9d0e4b3d72, type: 3}
       Loop: 0
+  - name:
+      Name: LaserShoot
+      PopUpIndexOfChosenName: 1
+    data:
+      Volume: 1
+      Clip: {fileID: 8300000, guid: b7c0bc83b2093744f896cf625b65f4ad, type: 3}
+      Loop: 0
+  - name:
+      Name: ZoneShoot
+      PopUpIndexOfChosenName: 2
+    data:
+      Volume: 0.5
+      Clip: {fileID: 8300000, guid: 39e282747e486ce48a319b6bbba63a0f, type: 3}
+      Loop: 0
+  - name:
+      Name: EnemyDead
+      PopUpIndexOfChosenName: 3
+    data:
+      Volume: 0.01
+      Clip: {fileID: 8300000, guid: 9f59479338e86b34087ed5e674bf3b44, type: 3}
+      Loop: 0

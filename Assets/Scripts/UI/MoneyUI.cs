@@ -6,11 +6,14 @@ using UnityEngine.UI;
 public class MoneyUI : MonoBehaviour
 {
     [SerializeField] Text _txtMesh;
-
+    
     void OnEnable()
     {
-        EventBus<MoneySpent>.Event += OnMoneySpent;
-        StartCoroutine(WhenAllocated(() => UpdateVisual(Store.Instance.Money)));
+        StartCoroutine(WhenAllocated(() =>
+        {
+            Store.Instance.Money.CurrentUpdated.AddListener(OnMoneySpent);
+            UpdateVisual(Store.Instance.Money.CurrentValue);
+        }));
     }
 
     IEnumerator WhenAllocated(Action action)
@@ -22,13 +25,14 @@ public class MoneyUI : MonoBehaviour
 
     void OnDisable()
     {
-        EventBus<MoneySpent>.Event -= OnMoneySpent;
+        if(Store.Instance != null) 
+            Store.Instance.Money.CurrentUpdated.RemoveListener(OnMoneySpent);
 
     }
 
-    void OnMoneySpent(MoneySpent moneySpent)
+    void OnMoneySpent(int old, Stat<int> money)
     {
-        UpdateVisual(moneySpent.NewTotal);
+        UpdateVisual(money.CurrentValue);
     }
 
     void UpdateVisual(int val)

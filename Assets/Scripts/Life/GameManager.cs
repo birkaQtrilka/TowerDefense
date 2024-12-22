@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour, IStateMachine
     [field: SerializeField] public PauseMenuUI PauseMenuUI { get; private set; }
     [field: SerializeField] public TowerSelector TowerSelector { get; private set; }
     [field: SerializeField] public TowerPlacer TowerPlacer { get; private set; }
-
+    [SerializeField, Range(0.0f, 1.0f)] float time = 1;
     public void TransitionToState(Type state)
     {
         CurrentState.OnExit();
@@ -62,6 +62,7 @@ public class GameManager : MonoBehaviour, IStateMachine
 
     public void Update()
     {
+        Time.timeScale = time;
         if (Input.GetKeyDown(KeyCode.Escape) && CurrentState.GetType() != typeof(Pause))
         {
             TransitionToState(typeof(Pause));

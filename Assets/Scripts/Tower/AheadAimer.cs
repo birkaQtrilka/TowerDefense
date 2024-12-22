@@ -17,18 +17,26 @@ public class AheadAimer : Aimer
         if(firstTarget != _cachedTarget)
         {
             _cachedTarget = firstTarget;
-            _mover = firstTarget.GetComponent<IMover>();
+            _mover = firstTarget.GetComponentInParent<IMover>();
         }
-        var u = firstTarget.position - transform.position;
-        var a = Mathf.Pow(_mover.Velocity.magnitude, 2) - Mathf.Pow((bullet as Projectile).Velocity.magnitude, 2);
-        var b = 2 * Vector3.Dot(_mover.Velocity, u);
-        var c = Mathf.Pow(u.magnitude, 2);
 
-        var delta = b * b - 4 * a * c;
+
+        Vector3 moverXZvelocity = _mover.Velocity;
+        moverXZvelocity.y = 0f;
+
+        Vector3 dir = firstTarget.position - transform.position;
+        float a = Mathf.Pow(moverXZvelocity.magnitude, 2) - Mathf.Pow((bullet as Projectile).StartSpeed, 2);
+        float b = 2 * Vector3.Dot(moverXZvelocity, dir);
+        float c = Mathf.Pow(dir.magnitude, 2);
+
+        float delta = b * b - 4 * a * c;
+
+
         if (delta > 0)
         {
-            var t = (-b - Mathf.Sqrt(delta)) / (2 * a);
-            var angle = u + t * _mover.Velocity;
+            float t = (-b - Mathf.Sqrt(delta)) / (2 * a);
+            Vector3 angle = dir + t * moverXZvelocity;
+            Debug.DrawRay(transform.position, angle, Color.yellow, 1);
             return Quaternion.LookRotation(angle, Vector3.Cross(transform.right, angle));
             //return transform.position + angle.normalized;
         }

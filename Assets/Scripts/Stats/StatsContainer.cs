@@ -8,8 +8,6 @@ using System.Linq;
 public class StatsContainer
 {
     [SerializeReference] List<Stat> stats;
-    Dictionary<Type, Stat> _statsDictionary;
-    
 
     public T GetStat<T>() where T : Stat
     {
@@ -19,15 +17,15 @@ public class StatsContainer
 
     }
 
-    void BuildDictionary()
-    {
-        _statsDictionary = new();
+    //void BuildDictionary()
+    //{
+    //    _statsDictionary = new();
 
-        foreach (Stat stat in stats) 
-        {
-            _statsDictionary.Add(stat.GetType(), stat);
-        }
-    }
+    //    foreach (Stat stat in stats) 
+    //    {
+    //        _statsDictionary.Add(stat.GetType(), stat);
+    //    }
+    //}
 
     public void DoForEach(Action<Stat> method)
     {

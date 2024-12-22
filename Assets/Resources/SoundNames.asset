@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Names:
   - CanonShoot
-  - Sound2
-  - Sound3
+  - LaserShoot
+  - ZoneShoot
+  - EnemyDead

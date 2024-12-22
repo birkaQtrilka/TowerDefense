@@ -5,21 +5,10 @@ using UnityEngine.UI;
 public class Store : MonoBehaviour
 {
 
-    [SerializeField] List<StoreSlot> _slots;
+    StoreSlot[] _slots;
     [SerializeField] Button _startGameBtn;
-    [SerializeField] int _money = 50;
-    [SerializeField] public int Money 
-    {
-        get
-        {
-            return _money;
-        }
-        private set 
-        {
-            _money = value;
-            UpdateVisual();
-        }
-    }
+    [field: SerializeField] public CarriedMoney Money { get; private set; }
+
     [SerializeField] TowerDataUI _ui;
     [SerializeField] TowerPlacer _towerPlacer;
 
@@ -31,10 +20,15 @@ public class Store : MonoBehaviour
             Destroy(gameObject);
         else
             Instance = this;
+
     }
 
     void OnEnable()
     {
+        _slots = GetComponentsInChildren<StoreSlot>();
+
+        Money.CurrentUpdated.AddListener(UpdateVisual);
+
         EventBus<TryBuy>.Event += BuyResponse;
 
         foreach (var slot in _slots)
@@ -43,12 +37,14 @@ public class Store : MonoBehaviour
             slot.Hover += OnSlotHover;
         }
 
-        UpdateVisual();
+        UpdateVisual(Money.CurrentValue, Money);
         _startGameBtn.gameObject.SetActive(true);
     }
 
     void OnDisable()
     {
+        Money.CurrentUpdated.RemoveListener(UpdateVisual);
+
         EventBus<TryBuy>.Event -= BuyResponse;
         TowerPlacer.TowerPlaced -= OnTowerPlaced;
 
@@ -68,7 +64,7 @@ public class Store : MonoBehaviour
 
     void OnSlotPressed(TowerData data)
     {
-        if (data.Price <= Money)
+        if (data.Price <= Money.CurrentValue)
         {
             TowerPlacer.TowerPlaced -= OnTowerPlaced;
 
@@ -79,33 +75,33 @@ public class Store : MonoBehaviour
 
     void OnTowerPlaced(TowerData towerData)
     {
-        Money -= towerData.Price;
+        Money.CurrentValue -= towerData.Price;
         TowerPlacer.TowerPlaced -= OnTowerPlaced;
-        EventBus<MoneySpent>.Publish(new MoneySpent(towerData.Price, Money));
+        //EventBus<MoneySpent>.Publish(new MoneySpent(towerData.Price, Money));
     }
     
     void BuyResponse(TryBuy tryBuy)
     {
-        if (tryBuy.Amount <= Money)
+        if (tryBuy.Amount <= Money.CurrentValue)
         {
             tryBuy.OnAllow();
-            Money -= tryBuy.Amount;
-            EventBus<MoneySpent>.Publish(new MoneySpent(tryBuy.Amount, Money));
+            Money.CurrentValue -= tryBuy.Amount;
+            //EventBus<MoneySpent>.Publish(new MoneySpent(tryBuy.Amount, Money));
 
         }
     }
 
-    public void Sell(TowerSeller seller)
-    {
-        Money -= seller.SellPrice;
-    }
-
-    public void UpdateVisual()
+    void UpdateVisual(int oldVal, Stat<int> money)
     {
         if (!gameObject.activeInHierarchy) return;
         foreach (var slot in _slots)
         {
-            slot.CanBeBought(slot.Data.Price <= Money); 
+            slot.CanBeBought(slot.Data.Price <= money.CurrentValue); 
         }
+    }
+
+    public void AddMoney(int amount)
+    {
+        Money.CurrentValue += amount;
     }
 }

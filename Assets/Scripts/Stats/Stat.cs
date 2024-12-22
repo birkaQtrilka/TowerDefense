@@ -5,9 +5,9 @@ using UnityEngine.Events;
 public abstract class Stat<T> : Stat
 {
     //previous and current
-    [EventFoldout][field: SerializeField] public UnityEvent<T,Stat<T>> CurrentUpdated { get; private set; }
-    [EventFoldout][field: SerializeField] public UnityEvent<T, Stat<T>> OriginalUpdated { get; private set; }
-    [EventFoldout][field: SerializeField] public UnityEvent<T, Stat<T>> MaxUpdated { get; private set; }
+    [field: EventFoldout][field: SerializeField] public UnityEvent<T,Stat<T>> CurrentUpdated { get; private set; }
+    [field: EventFoldout][field: SerializeField] public UnityEvent<T, Stat<T>> OriginalUpdated { get; private set; }
+    [field: EventFoldout][field: SerializeField] public UnityEvent<T, Stat<T>> MaxUpdated { get; private set; }
 
     [SerializeField] T _currentValue; 
     [SerializeField] T _originalValue; 
@@ -26,6 +26,13 @@ public abstract class Stat<T> : Stat
             _currentValue = value;
             CurrentUpdated?.Invoke(copy, this);
         }
+    }
+
+    public void Update()
+    {
+        CurrentUpdated = CurrentUpdated;
+        OriginalUpdated = OriginalUpdated;
+        MaxUpdated = MaxUpdated;
     }
 
     public T OriginalValue

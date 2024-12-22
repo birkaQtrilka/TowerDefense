@@ -2,7 +2,7 @@
 {
     public void ParseMoney(Enemy enemy)
     {
-        ShowText(enemy.GetStat<CarriedMoney>().CurrentValue + "$");
+        ShowText(enemy.CarriedMoney.CurrentValue + "$");
     }
 
 }

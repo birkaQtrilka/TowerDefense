@@ -23,6 +23,6 @@ public class BulletDamager : MonoBehaviour
 
         //CAN DO:
         //if enemy is water type and tower damage is fire type, do no damage etc.
-        victim.GetHealth().CurrentValue -= Damage.CurrentValue;
+        victim.Health.CurrentValue -= Damage.CurrentValue;
     }
 }

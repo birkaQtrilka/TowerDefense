@@ -1,7 +1,5 @@
 ﻿
-namespace Assets.Scripts.Stats
+[System.Serializable]
+public class Range : Stat<float>
 {
-    public class Range : Stat<float>
-    {
-    }
 }

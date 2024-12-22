@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.Events;
 //could also be called effect appllier
@@ -16,4 +15,5 @@ public abstract class Bullet : MonoBehaviour
     {
         OnHit = null;
     }
+
 }

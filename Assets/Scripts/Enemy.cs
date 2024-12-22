@@ -6,34 +6,27 @@ public class Enemy : MonoBehaviour
 {
     public UnityEvent<Enemy> OnDeath;
     public UnityEvent<Enemy> OnDestroy;
-    [SerializeField] StatsContainer _stats;
+    //[SerializeField] StatsContainer _stats;
     //IMover _walker;
-
-    Health _health;
-
-    void Awake()
-    {
-        //_walker = GetComponent<IMover>();
-        _health = _stats.GetStat<Health>();
-    }
+    [field: SerializeField] public Health Health { get; private set; }
+    [field: SerializeField] public Speed Speed { get; private set; }
+    [field: SerializeField] public CarriedMoney CarriedMoney { get; private set; }
+    
 
     void OnEnable()
     {
-        _health.CurrentUpdated.AddListener(CheckForDeath);    
+        Health.CurrentUpdated.AddListener(CheckForDeath);    
+        //for stuff to get initialized on start (move speed)
+        Speed.CurrentValue = Speed.CurrentValue;
+        
     }
 
     void OnDisable()
     {
-        _health.CurrentUpdated.RemoveListener(CheckForDeath);
+        Health.CurrentUpdated.RemoveListener(CheckForDeath);
         OnDestroy?.Invoke(this);
     }
-
-    public T GetStat<T>()where T : Stat => _stats.GetStat<T>(); 
-
-    public Health GetHealth()
-    {
-        return _health;
-    }
+    
 
     void CheckForDeath(int prevHp, Stat<int> health)
     {

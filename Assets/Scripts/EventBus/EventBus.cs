@@ -12,16 +12,16 @@ public class EventBus<T> where T : IEvent
 
 public interface IEvent { }
 
-public readonly struct MoneySpent : IEvent//can get rid of this and make it a store event
-{
-    public int Amount { get; }
-    public int NewTotal { get; }
-    public MoneySpent(int amount, int money)
-    {
-        Amount = amount;
-        NewTotal = money;
-    }
-}
+//public readonly struct MoneySpent : IEvent//can get rid of this and make it a store event
+//{
+//    public int Amount { get; }
+//    public int NewTotal { get; }
+//    public MoneySpent(int amount, int money)
+//    {
+//        Amount = amount;
+//        NewTotal = money;
+//    }
+//}
 
 public readonly struct TryBuy : IEvent
 {

@@ -208,13 +208,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Damage:
-    OnCurrentUpdate:
+    <CurrentUpdated>k__BackingField:
       m_PersistentCalls:
         m_Calls: []
-    OnOriginalUpdate:
+    <OriginalUpdated>k__BackingField:
       m_PersistentCalls:
         m_Calls: []
-    OnMaxUpdate:
+    <MaxUpdated>k__BackingField:
       m_PersistentCalls:
         m_Calls: []
     _currentValue: 1

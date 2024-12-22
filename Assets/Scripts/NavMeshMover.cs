@@ -21,6 +21,9 @@ public class NavMeshMover : MonoBehaviour, IMover
 
     public void SetMoveSpeed(float speed)
     {
+        if(_navAgent == null)
+            _navAgent = GetComponent<NavMeshAgent>();
+
         _navAgent.speed = speed;
     }
 

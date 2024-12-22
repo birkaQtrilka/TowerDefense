@@ -24,9 +24,9 @@ public class StrongFirstEnemySpawner : EnemySpawner
     {
         Array.Sort(sets,
                 Comparer<EnemyWave.EnemySet>.Create((a, b) =>
-                    a.EnemyPrefab.GetHealth().CurrentValue
+                    a.EnemyPrefab.Health.CurrentValue
                     .CompareTo(
-                    b.EnemyPrefab.GetHealth().CurrentValue)
+                    b.EnemyPrefab.Health.CurrentValue)
                 ));
     }
 }
