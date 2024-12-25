@@ -25,6 +25,7 @@ public class GameTowerUI : MonoBehaviour
 
     public void UpdateVisual(TowerUpgrader upgrader)
     {
+
         Tower tower = upgrader.Tower;
 
         _selectionImg.sprite = upgrader.UiImage;

@@ -16,7 +16,7 @@ public class LevelsManager : MonoBehaviour
 
     [SerializeField] LevelData[] _levels;
 
-    int _farthestLevel;
+    int _farthestLevel ;
     int _currLevel;
     
     public int CurrLevel 
@@ -46,13 +46,17 @@ public class LevelsManager : MonoBehaviour
 
         string lvlName = SceneManager.GetActiveScene().name;
         int i = 0;
+        bool found = false;
         for (; i < _levels.Length; i++)
         {
             if (_levels[i].Name == lvlName)
+            {
+                found = true;
                 break;
+            }
         }
-
-        CurrLevel = i;    
+        if(found)
+            CurrLevel = i;    
     }
 
     public void MarkNextLevelUnlocked()

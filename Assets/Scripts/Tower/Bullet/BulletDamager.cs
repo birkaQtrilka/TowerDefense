@@ -16,6 +16,13 @@ public class BulletDamager : MonoBehaviour
         //On hit automatically remvoes all listeners, no need for onDisable decoupling
         _bullet.OnHit.AddListener(DoDamage);
     }
+    
+    void OnDisable()
+    {
+        //On hit automatically remvoes all listeners, no need for onDisable decoupling
+        if( _bullet != null )
+        _bullet.OnHit?.RemoveListener(DoDamage);
+    }
 
     void DoDamage(Tower sender, Enemy victim)
     {

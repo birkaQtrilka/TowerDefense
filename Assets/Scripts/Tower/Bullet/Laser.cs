@@ -11,9 +11,8 @@ public class Laser : Bullet
     {
         Debug.DrawRay(transform.position, transform.forward * Sender.Stats.GetStat<Range>().CurrentValue, Color.green, 1);
         //Debug.Break();
-        int count = Physics.SphereCastNonAlloc(
+        int count = Physics.RaycastNonAlloc(
             new Ray(transform.position, transform.forward), 
-            2f, 
             _results, 
             100,
             //Sender.Stats.GetStat<Range>().CurrentValue,

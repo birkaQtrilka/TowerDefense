@@ -522,8 +522,8 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
+  m_UseGravity: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -542,8 +542,8 @@ MonoBehaviour:
   _popUpPrefab: {fileID: 8745852891684664666, guid: ea0ab76b776dc5343a8fc64e0065eb6c,
     type: 3}
   _spawnPoint: {fileID: 1945205295761652352}
-  _riseTime: 1.88
-  _riseSpeed: 0.1
+  _riseTime: 1
+  _riseSpeed: 4
   _wobbleAmplitude: 0.11
   _wobbleSpeed: 0.1
 --- !u!114 &835264045130261987
@@ -561,8 +561,8 @@ MonoBehaviour:
   _popUpPrefab: {fileID: 8745852891684664666, guid: 02f62968cb92dfa49b4c3ff884a3abfa,
     type: 3}
   _spawnPoint: {fileID: 1945205295761652352}
-  _riseTime: 1.88
-  _riseSpeed: 0.12
+  _riseTime: 1
+  _riseSpeed: 4
   _wobbleAmplitude: 0.11
   _wobbleSpeed: 0.1
 --- !u!1001 &373862346480583375
@@ -728,19 +728,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6500000, guid: 15034ff00d33b624fbe98f7b78e30f70, type: 3}
       propertyPath: m_Size.x
-      value: 1
+      value: 0.72
       objectReference: {fileID: 0}
     - target: {fileID: 6500000, guid: 15034ff00d33b624fbe98f7b78e30f70, type: 3}
       propertyPath: m_Size.y
-      value: 1
+      value: 0.96
       objectReference: {fileID: 0}
     - target: {fileID: 6500000, guid: 15034ff00d33b624fbe98f7b78e30f70, type: 3}
       propertyPath: m_Size.z
-      value: 1
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 6500000, guid: 15034ff00d33b624fbe98f7b78e30f70, type: 3}
       propertyPath: m_Center.y
-      value: 0.25
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 6500000, guid: 15034ff00d33b624fbe98f7b78e30f70, type: 3}
       propertyPath: m_IsTrigger

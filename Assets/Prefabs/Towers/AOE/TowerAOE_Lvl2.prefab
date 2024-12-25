@@ -171,7 +171,7 @@ PrefabInstance:
     - target: {fileID: 6293539212661847513, guid: d5ef51de35898d344b1271b7fda90cf1,
         type: 3}
       propertyPath: managedReferences[2750516902491324417]._currentValue
-      value: 0.18
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 6293539212661847513, guid: d5ef51de35898d344b1271b7fda90cf1,
         type: 3}
@@ -181,7 +181,7 @@ PrefabInstance:
     - target: {fileID: 6293539212661847513, guid: d5ef51de35898d344b1271b7fda90cf1,
         type: 3}
       propertyPath: managedReferences[2750516902491324417]._originalValue
-      value: 0.5
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 6293539212661847513, guid: d5ef51de35898d344b1271b7fda90cf1,
         type: 3}

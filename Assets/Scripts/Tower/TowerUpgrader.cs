@@ -39,8 +39,8 @@ public class TowerUpgrader : MonoBehaviour
         var upgradedInstance = Instantiate(_data.UpgradeList[++_currentUpdate]);
 
         var nextUpgrader = upgradedInstance.GetComponent<TowerUpgrader>();
-
-        nextUpgrader.Init(_data, _currentUpdate);
+        if (nextUpgrader != null) 
+            nextUpgrader.Init(_data, _currentUpdate);
         Upgraded?.Invoke(this, nextUpgrader);
         Destroy(_instance.gameObject);
     }

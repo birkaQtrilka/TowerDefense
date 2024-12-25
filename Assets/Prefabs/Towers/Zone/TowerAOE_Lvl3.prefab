@@ -354,8 +354,7 @@ PrefabInstance:
       propertyPath: _rotationAxis.y
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 7223423612517962538, guid: f777384f298122b4f9d8417d74eafedb, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 2197478139156606289, guid: f777384f298122b4f9d8417d74eafedb, type: 3}
     m_AddedGameObjects:

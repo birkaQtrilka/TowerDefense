@@ -19,7 +19,6 @@ public class ZoneBullet : Bullet
     {
         var enemy = other.gameObject.GetComponentInParent<Enemy>();
         if (enemy == null) return;
-        enabled = false;
         OnEnemyCollide.Invoke(Sender, enemy);
         CallOnHitEvent(enemy);
     }
