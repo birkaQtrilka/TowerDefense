@@ -58,20 +58,40 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5948655671147615617, guid: eae1e1be43f422e419cf5dec705a8bd9,
+        type: 3}
+      propertyPath: _pierce
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6115339805259624003, guid: eae1e1be43f422e419cf5dec705a8bd9,
         type: 3}
       propertyPath: m_Name
-      value: BombBullet Variant
+      value: BombBullet_Lvl2
       objectReference: {fileID: 0}
     - target: {fileID: 7464034553810087332, guid: eae1e1be43f422e419cf5dec705a8bd9,
         type: 3}
       propertyPath: _explosionRadius
-      value: 2
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 7741296912040777945, guid: eae1e1be43f422e419cf5dec705a8bd9,
         type: 3}
       propertyPath: Damage
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7741296912040777945, guid: eae1e1be43f422e419cf5dec705a8bd9,
+        type: 3}
+      propertyPath: Damage._maxValue
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7741296912040777945, guid: eae1e1be43f422e419cf5dec705a8bd9,
+        type: 3}
+      propertyPath: Damage._currentValue
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7741296912040777945, guid: eae1e1be43f422e419cf5dec705a8bd9,
+        type: 3}
+      propertyPath: Damage._originalValue
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

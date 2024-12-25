@@ -246,7 +246,7 @@ MonoBehaviour:
   _aimer: {fileID: -9175440362607781661}
   _bulletSpawnSpot: {fileID: 8394838147740747789}
   _yRotator: {fileID: 5250614479171835780}
-  _xRotator: {fileID: 7233999630170490341}
+  _xRotator: {fileID: 0}
   references:
     version: 2
     RefIds:
@@ -330,7 +330,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <UiImage>k__BackingField: {fileID: 21300000, guid: fee2e2cbf1e188141b18e4c7ff2ca4e0,
     type: 3}
-  <UpgradeCost>k__BackingField: 10
+  <UpgradeCost>k__BackingField: 30
 --- !u!114 &-5596503115342584366
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -343,7 +343,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae2693daa7500af4c8b1e08d6f994678, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <SellPrice>k__BackingField: 10
+  <SellPrice>k__BackingField: 20
 --- !u!114 &-9175440362607781661
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -748,12 +748,6 @@ PrefabInstance:
 --- !u!4 &5250614479171835780 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7438026f0dfb0b640a215d102e3a68fc,
-    type: 3}
-  m_PrefabInstance: {fileID: 5717134397987237999}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &7233999630170490341 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -6110536800543132278, guid: 7438026f0dfb0b640a215d102e3a68fc,
     type: 3}
   m_PrefabInstance: {fileID: 5717134397987237999}
   m_PrefabAsset: {fileID: 0}

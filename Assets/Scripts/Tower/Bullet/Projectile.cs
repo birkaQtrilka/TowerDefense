@@ -27,7 +27,6 @@ public class Projectile : Bullet
 
         var enemy = collision.gameObject.GetComponentInParent<Enemy>();
         if (enemy == null) return;
-        Debug.Log("Collided: " + collision.gameObject);
         CallOnHitEvent(enemy);
         OnEnemyCollide.Invoke(Sender, enemy);
         if(_currPierce-- <= 0)

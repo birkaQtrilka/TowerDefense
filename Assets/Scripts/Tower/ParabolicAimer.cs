@@ -13,7 +13,7 @@ namespace Assets.Scripts.Tower
             foreach (Transform t in targets)
                 if (t != null)
                     firstTarget = t;
-            if (firstTarget == null) return Quaternion.identity;
+            if (firstTarget == null) return DefaultRotation;
 
             //have the parabola
 

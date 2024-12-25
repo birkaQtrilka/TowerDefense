@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+
 [SelectionBase]
 public class Tower : MonoBehaviour//make it generic and accept scriptable objects?
 {
@@ -23,7 +24,7 @@ public class Tower : MonoBehaviour//make it generic and accept scriptable object
 
     void OnDrawGizmos()
     {
-        Gizmos.color = Color.red;
+        Gizmos.color = Color.black;
         if(_aimer != null && _finder != null)
         Gizmos.DrawRay(_bulletSpawnSpot.position, _aimer.GetAttackLook(BulletPrefab, _finder.GetAvailableTargets()) * Vector3.forward * 3);    
     }
@@ -31,7 +32,13 @@ public class Tower : MonoBehaviour//make it generic and accept scriptable object
     void Awake()
     {
          _attackCooldown = Stats.GetStat<Speed>();
-        
+        if (_aimer == null) return;
+
+        if(_xRotator != null)
+            _aimer.DefaultRotation *= _xRotator.rotation;
+        if (_yRotator != null)
+            _aimer.DefaultRotation *= _yRotator.rotation;
+
     }
 
     private void Start()
@@ -74,6 +81,8 @@ public class Tower : MonoBehaviour//make it generic and accept scriptable object
             position: _bulletSpawnSpot.position,
             rotation: rotation
         );
+
+        //bullet.transform.forward = rotation * Vector3.forward ;
 
         bullet.Sender = this;
         bullet.Init();

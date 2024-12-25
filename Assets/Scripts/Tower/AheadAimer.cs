@@ -12,7 +12,7 @@ public class AheadAimer : Aimer
         foreach (Transform t in targets)
             if (t != null)
                 firstTarget = t;
-        if (firstTarget == null) return Quaternion.identity;
+        if (firstTarget == null) return DefaultRotation;
         //every frame? not good;
         if(firstTarget != _cachedTarget)
         {
@@ -40,6 +40,6 @@ public class AheadAimer : Aimer
             return Quaternion.LookRotation(angle, Vector3.Cross(transform.right, angle));
             //return transform.position + angle.normalized;
         }
-        return Quaternion.identity;
+        return DefaultRotation;
     }
 }

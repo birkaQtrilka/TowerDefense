@@ -361,7 +361,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <UiImage>k__BackingField: {fileID: 21300000, guid: fee2e2cbf1e188141b18e4c7ff2ca4e0,
     type: 3}
-  <UpgradeCost>k__BackingField: 10
+  <UpgradeCost>k__BackingField: 100
 --- !u!114 &-5596503115342584366
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -374,7 +374,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae2693daa7500af4c8b1e08d6f994678, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <SellPrice>k__BackingField: 10
+  <SellPrice>k__BackingField: 50
 --- !u!1 &6272082485911774744
 GameObject:
   m_ObjectHideFlags: 0

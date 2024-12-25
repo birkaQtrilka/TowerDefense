@@ -217,7 +217,7 @@ MonoBehaviour:
     <MaxUpdated>k__BackingField:
       m_PersistentCalls:
         m_Calls: []
-    _currentValue: 1
-    _originalValue: 1
-    _maxValue: 1
+    _currentValue: 2
+    _originalValue: 2
+    _maxValue: 2
     Type: 0

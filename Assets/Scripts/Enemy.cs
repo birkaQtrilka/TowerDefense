@@ -1,7 +1,8 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-[RequireComponent (typeof(IMover))]
+[RequireComponent(typeof(IMover))]
+[SelectionBase]
 public class Enemy : MonoBehaviour
 {
     public UnityEvent<Enemy> OnDeath;

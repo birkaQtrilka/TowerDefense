@@ -9,7 +9,7 @@ public class Laser : Bullet
 
     public override void Init()
     {
-        Debug.DrawRay(transform.position, transform.forward * Sender.Stats.GetStat<Range>().CurrentValue, Color.blue, 1);
+        Debug.DrawRay(transform.position, transform.forward * Sender.Stats.GetStat<Range>().CurrentValue, Color.green, 1);
         //Debug.Break();
         int count = Physics.SphereCastNonAlloc(
             new Ray(transform.position, transform.forward), 
@@ -20,7 +20,6 @@ public class Laser : Bullet
             layers,
             QueryTriggerInteraction.Collide
         );
-        Debug.Log(count);
         if (count <= 0) return;
         Enemy enemy = null;
         for (int i = 0; i < count; i++)

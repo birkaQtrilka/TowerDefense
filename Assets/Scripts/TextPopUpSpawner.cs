@@ -26,12 +26,13 @@ public abstract class TextPopUpSpawner : MonoBehaviour
         float currTime = 0;
         Transform txtTransform = txt.transform;
         txtTransform.position = _spawnPoint.position;
-        Vector3 up = txtTransform.up;
-        Vector3 right = txtTransform.right;
+        Vector3 up = Vector3.up;
+        Vector3 right = Vector3.right;
+
         while (currTime < _riseTime)
         {
             currTime += Time.deltaTime;
-            txtTransform.position += _riseSpeed * up + Mathf.Sin(Time.time * _wobbleSpeed) * _wobbleAmplitude * right;
+            txtTransform.position += _riseSpeed * Time.deltaTime * up + Mathf.Sin(Time.time * _wobbleSpeed) * _wobbleAmplitude * right;
             txt.alpha = 1 - currTime / _riseTime;
 
             yield return null;

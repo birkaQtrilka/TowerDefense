@@ -10,7 +10,7 @@ public class DummyAimer : Aimer
         foreach (Transform t in targets) 
             if(t != null)
                 firstTarget = t;
-        if(firstTarget == null) return Quaternion.identity;
+        if(firstTarget == null) return DefaultRotation;
         
         return  Quaternion.LookRotation((firstTarget.position - transform.position).normalized);
     }
