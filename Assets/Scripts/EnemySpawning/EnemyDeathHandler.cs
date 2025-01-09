@@ -21,6 +21,7 @@ public class EnemyDeathHandler : MonoBehaviour
 
     void OnDeath(Enemy enemy)
     {
-        Store.Instance.AddMoney(enemy.CarriedMoney.CurrentValue);
+        if (Store.Instance != null)
+            Store.Instance.AddMoney(enemy.CarriedMoney.CurrentValue);
     }
 }

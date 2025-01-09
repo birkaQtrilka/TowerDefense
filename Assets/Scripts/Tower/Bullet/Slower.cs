@@ -1,10 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Slower : MonoBehaviour
 {
-    public float _slowAmount;
+    public float SlowAmount;
 
     Bullet _bullet;
     void Awake()
@@ -14,8 +12,13 @@ public class Slower : MonoBehaviour
 
     void OnEnable()
     {
-        //On hit automatically remvoes all listeners, no need for onDisable decoupling
         _bullet.OnHit.AddListener(DoSlow);
+    }
+
+    void OnDisable()
+    {
+        if(_bullet != null)
+        _bullet.OnHit?.RemoveListener(DoSlow);
     }
 
     public void DoSlow(Tower sender, Enemy victim)
@@ -23,8 +26,8 @@ public class Slower : MonoBehaviour
         //get tower damage stat
         var enemySpeed = victim.Speed;
 
-        float slowVal = enemySpeed.OriginalValue - _slowAmount;
-        if ( slowVal < enemySpeed.CurrentValue)
+        float slowVal = enemySpeed.OriginalValue - SlowAmount;
+        if (slowVal < enemySpeed.CurrentValue)
             enemySpeed.CurrentValue = slowVal;
     }
 }

@@ -15,7 +15,7 @@ public class AutoDisabler : MonoBehaviour
     {
         _currTime += Time.deltaTime;
         if (_currTime < _time) return;
-
+        if(gameObject != null)
         Destroy(gameObject);
     }
 }

@@ -98,6 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35cf38e03bf38f746ae1027aabc15550, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _targets: []
 --- !u!135 &2802058205988103336
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -428,6 +429,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <UiImage>k__BackingField: {fileID: 21300000, guid: fee2e2cbf1e188141b18e4c7ff2ca4e0,
+    type: 3}
+  <CanUpgradeVisual>k__BackingField: {fileID: 6382348633982908727, guid: 3570d48fd2f101443bd2dce5f73b104f,
     type: 3}
   <UpgradeCost>k__BackingField: 50
 --- !u!114 &-5596503115342584366

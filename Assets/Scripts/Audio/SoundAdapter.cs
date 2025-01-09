@@ -9,11 +9,13 @@ public class SoundAdapter : MonoBehaviour
 
     public void PlaySound()
     {
-        _soundID = SoundManager.Instance.PlaySound(_soundName,_volume);
+        if(SoundManager.Instance != null)
+            _soundID = SoundManager.Instance.PlaySound(_soundName,_volume);
     }
 
     public void StopSound()
     {
-        SoundManager.Instance.StopSound(_soundID);
+        if(SoundManager.Instance != null)
+            SoundManager.Instance.StopSound(_soundID);
     }
 }

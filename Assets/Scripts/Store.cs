@@ -14,6 +14,10 @@ public class Store : MonoBehaviour
 
     public static Store Instance { get; private set; }
 
+    public bool InfiniteMoney { get; set; }
+
+    int _moneyBeforeInfinite = -1;
+
     void Awake()
     {
         if (Instance != null && Instance != this)
@@ -77,7 +81,6 @@ public class Store : MonoBehaviour
     {
         Money.CurrentValue -= towerData.Price;
         TowerPlacer.TowerPlaced -= OnTowerPlaced;
-        //EventBus<MoneySpent>.Publish(new MoneySpent(towerData.Price, Money));
     }
     
     void BuyResponse(TryBuy tryBuy)
@@ -86,7 +89,6 @@ public class Store : MonoBehaviour
         {
             tryBuy.OnAllow();
             Money.CurrentValue -= tryBuy.Amount;
-            //EventBus<MoneySpent>.Publish(new MoneySpent(tryBuy.Amount, Money));
 
         }
     }
@@ -103,5 +105,27 @@ public class Store : MonoBehaviour
     public void AddMoney(int amount)
     {
         Money.CurrentValue += amount;
+    }
+
+
+    void Update()
+    {
+        if(InfiniteMoney)
+        {
+            if(Money.CurrentValue != 999999)
+            {
+                if (_moneyBeforeInfinite == -1)
+                    _moneyBeforeInfinite = Money.CurrentValue;
+                Money.CurrentValue = 999999;
+            }
+        }
+        else
+        {
+            if (_moneyBeforeInfinite != -1)
+            {
+                Money.CurrentValue = _moneyBeforeInfinite;
+                _moneyBeforeInfinite = -1;
+            }
+        }
     }
 }
