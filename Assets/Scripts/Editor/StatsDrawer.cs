@@ -3,7 +3,6 @@ using System.Linq;
 using System.Reflection;
 using UnityEditor;
 using UnityEngine;
-using UnityEngine.Windows;
 
 [CustomPropertyDrawer(typeof(StatsContainer))]
 public class StatsDrawer : PropertyDrawer
@@ -16,7 +15,6 @@ public class StatsDrawer : PropertyDrawer
         SerializedProperty statsProperty = property.FindPropertyRelative("stats");
         if (statsProperty == null) return EditorGUIUtility.singleLineHeight;
 
-        EditorGUI.GetPropertyHeight(statsProperty, label);
         // Height includes one line for the header and one line per list item + add button
         return EditorGUI.GetPropertyHeight(statsProperty, label);
     }
@@ -29,7 +27,7 @@ public class StatsDrawer : PropertyDrawer
             EditorGUI.LabelField(position, "Unable to find 'stats' property.");
             return;
         }
-        property.serializedObject.Update(); // Ensure serializedObject is synced
+        property.serializedObject.Update(); 
 
         EditorGUILayout.LabelField(label);
 
@@ -40,7 +38,6 @@ public class StatsDrawer : PropertyDrawer
             EditorGUILayout.BeginHorizontal();
             EditorGUILayout.PropertyField(element, new GUIContent(element.type.Split('<', '>')[1]),true);
 
-            // Draw Remove button
             if (GUILayout.Button("Remove", GUILayout.MaxWidth(100)))
             {
                 statsProperty.DeleteArrayElementAtIndex(i);
@@ -87,6 +84,7 @@ public class StatsDrawer : PropertyDrawer
         MenuData data = menuDataObj as MenuData;
         data.statsProperty.serializedObject.Update();
 
+        //to know what item was selected when creating another menu
         _currentlySelectedType = data.type.Name;
         SerializedProperty arrayProp = data.statsProperty;
 

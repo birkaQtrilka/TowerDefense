@@ -1,6 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+
+//spawns different models and rotates them randomly
 [ExecuteInEditMode]
 public class RandomModel : MonoBehaviour
 {

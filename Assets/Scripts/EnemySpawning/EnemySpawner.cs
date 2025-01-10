@@ -1,30 +1,33 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-
+/// <summary>
+/// Handles attack Waves and the spawn of enemies
+/// </summary>
 public abstract class EnemySpawner : MonoBehaviour
 {
     [field: SerializeField] public UnityEvent<EnemySpawner> WaveDone {  get; private set; }
 
-    //curr, max
+    //current wave, max waves
     [field: SerializeField] public UnityEvent<int, int> ValuesChanged { get; private set; }
 
     [SerializeField] protected PathingManager pathingManager;
     [SerializeField] protected EnemyWave[] waves;
 
-    public int CurrentWave => currWave;
+    public int CurrentWave { get; protected set; }
     public int TotalWaves => waves.Length;
-
-    protected int currWave;
-    Coroutine currWaveRoutine;
-
+    /// <summary>
+    /// to prevent recalculating the position on every enemy spawn
+    /// </summary>
     Vector3 _cahcedStartPosition;
+    //keeping track to know when to finish the level
+    readonly List<Enemy> _spawnedEnemies = new();
 
-    List<Enemy> _spawnedEnemies = new();
-
+    /// <summary>
+    /// starts up the wave
+    /// </summary>
     public void StartSpawning()
     {
         _cahcedStartPosition = pathingManager.GetStartPosition();
@@ -33,9 +36,17 @@ public abstract class EnemySpawner : MonoBehaviour
         StartCoroutine(SpawnWavesCR());
     }
 
-    //this decides the order and timing of enemyspawns within a wave
+    /// <summary>
+    /// decides the order and timing of enemyspawns within a wave
+    /// </summary>
+    /// <param name="wave"></param>
+    /// <returns></returns>
     protected abstract IEnumerator SpawnWave(EnemyWave wave);
 
+    /// <summary>
+    /// responsible for initializing the Enemy
+    /// </summary>
+    /// <param name="prefab"></param>
     protected virtual void SpawnEnemy(Enemy prefab)
     {
         Enemy enemy = Instantiate(prefab, _cahcedStartPosition, Quaternion.identity);
@@ -48,6 +59,7 @@ public abstract class EnemySpawner : MonoBehaviour
         walkingBehavior.MoveToDestination();
     }
 
+
     void OnEnemyDeath(Enemy enemy)
     {
         _spawnedEnemies.Remove(enemy);
@@ -55,14 +67,18 @@ public abstract class EnemySpawner : MonoBehaviour
         enemy.OnDestroy.RemoveListener(OnEnemyDeath);
     }
 
+    /// <summary>
+    /// responsible to set the pause between waves
+    /// </summary>
+    /// <returns></returns>
     IEnumerator SpawnWavesCR()
     {
-        if (currWave > waves.Length - 1) yield break;
+        if (CurrentWave > waves.Length - 1) yield break;
 
-        yield return SpawnWave(waves[currWave]);
-        currWave++;
-        ValuesChanged?.Invoke(currWave, waves.Length);
-
+        yield return SpawnWave(waves[CurrentWave]);
+        CurrentWave++;
+        ValuesChanged?.Invoke(CurrentWave, waves.Length);
+        
         yield return new WaitUntil(()=> _spawnedEnemies.Count == 0);
 
         WaveDone?.Invoke(this);

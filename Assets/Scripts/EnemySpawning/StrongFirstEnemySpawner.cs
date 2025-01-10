@@ -2,7 +2,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/// <summary>
+/// orders by health count
+/// </summary>
 public class StrongFirstEnemySpawner : EnemySpawner
 {
     protected override IEnumerator SpawnWave(EnemyWave wave)

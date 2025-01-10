@@ -1,10 +1,11 @@
 using UnityEngine;
-
+/// <summary>
+/// responsible of handling when and how you lose lives
+/// </summary>
 public class LifeManager : MonoBehaviour
 {
 	[field: SerializeField] public Health LifeAmount { get; private set; }
 	[SerializeField] EndPoint _endPoint;
-
 
     void OnEndPointReached(Enemy enemy)
     {
@@ -13,7 +14,7 @@ public class LifeManager : MonoBehaviour
 
     void OnLifeChanged(int oldVal, Stat<int> health)
     {
-        if(health.CurrentValue <=0)
+        if(health.CurrentValue <= 0)
             GameManager.Instance.TransitionToState(typeof(GameOver));
 
     }

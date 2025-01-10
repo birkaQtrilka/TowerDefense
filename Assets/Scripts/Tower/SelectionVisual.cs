@@ -1,7 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Used for visualising the data of an item
+/// </summary>
 public abstract class SelectionVisual : MonoBehaviour
 {
     public abstract void Select();

@@ -12,7 +12,6 @@ public class PauseMenuUI : MonoBehaviour
         _resumeBtn.onClick.AddListener(() => 
         {
             GameManager.Instance.TransitionToState(GameManager.Instance.PreviousState.GetType());
-            Debug.Log("resu,me");
         });    
         _exitBtn.onClick.AddListener(() => LevelsManager.Instance.QuitGame());    
         _mainMenuBtn.onClick.AddListener(() => LevelsManager.Instance.GoToMainMenu());    

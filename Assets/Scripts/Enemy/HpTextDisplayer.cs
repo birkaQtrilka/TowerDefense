@@ -1,4 +1,7 @@
-﻿public class HpTextDisplayer : TextPopUpSpawner
+﻿/// <summary>
+/// spawns text that flies up and wobbles
+/// </summary>
+public class HpTextDisplayer : TextPopUpSpawner
 {
     public void ParseHp(int prev, Stat<int> hp)
     {

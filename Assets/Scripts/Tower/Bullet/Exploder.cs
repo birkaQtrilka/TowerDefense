@@ -1,14 +1,18 @@
 using System;
 using System.Collections;
 using UnityEngine;
+
+//works only with projectiles
 [RequireComponent (typeof(Projectile))]
 public class Exploder : MonoBehaviour
 {
     [SerializeField] float _explosionRadius;
-
+    
     Projectile _projectile;
-    Action<Enemy> _onHitEvent;
-    bool added = false;
+    Action<Enemy> _onHitCallback;
+
+    //to prevent multiple explosions if the bullet hit more than one enemy
+    bool _exploded = false;
 
     void Awake()
     {
@@ -17,12 +21,12 @@ public class Exploder : MonoBehaviour
 
     public void Explode()
     {
-        if (added) return;
-        added = true;
-        _projectile.AddBeforeDeathAction(ExplosiveTimer(), out _onHitEvent);
+        if (_exploded) return;
+        _exploded = true;
+        _projectile.AddBeforeDeathAction(ExplosiveTimer(), out _onHitCallback);
 
     }
-
+    //allows to wait for an animation or to have an explosion that's not instant
     IEnumerator ExplosiveTimer()
     {
         var collisions = Physics.OverlapSphere(transform.position, _explosionRadius);
@@ -32,10 +36,15 @@ public class Exploder : MonoBehaviour
             var enemy = collision.gameObject.GetComponentInParent<Enemy>();
             if (enemy == null) continue;
             Debug.Log("explosion effect");
-            _onHitEvent(enemy);
+            _onHitCallback(enemy);
         }
 
-        _onHitEvent = null;
+        _onHitCallback = null;
         yield return null;
+    }
+
+    void OnDisable()
+    {
+        _onHitCallback = null;
     }
 }

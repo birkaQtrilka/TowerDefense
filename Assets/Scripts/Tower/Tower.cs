@@ -1,9 +1,8 @@
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
 [SelectionBase]
-public class Tower : MonoBehaviour//make it generic and accept scriptable objects?
+public class Tower : MonoBehaviour
 {
     [SerializeField] UnityEvent _onTowerShoot;
 
@@ -18,6 +17,7 @@ public class Tower : MonoBehaviour//make it generic and accept scriptable object
     [SerializeField] Transform _yRotator;
     [SerializeField] Transform _xRotator;
 
+    //caching speed from the container for faster acces
     Speed _attackCooldown;
     float _currCooldown;
 
@@ -41,7 +41,7 @@ public class Tower : MonoBehaviour//make it generic and accept scriptable object
 
     }
 
-    private void Start()
+    void Start()
     {
         var range = Stats.GetStat<Range>();
         range.CurrentValue = range.CurrentValue;
@@ -50,7 +50,8 @@ public class Tower : MonoBehaviour//make it generic and accept scriptable object
     void Update()
     {
         if (_finder.GetSingleTarget() == null) return;
-        //put this in view class?
+
+        //no aimer might be possible in the case of an AOE bullet
         Quaternion attackLook = _aimer == null ? 
             Quaternion.identity :
             _aimer.GetAttackLook(BulletPrefab, _finder.GetAvailableTargets());
@@ -60,17 +61,18 @@ public class Tower : MonoBehaviour//make it generic and accept scriptable object
         if(_xRotator != null)
             _xRotator.localEulerAngles = new Vector3(attackLook.x,0,0);
 
+        //shooting based on cooldown
         _currCooldown += Time.deltaTime;
         if (_currCooldown < _attackCooldown.CurrentValue) return;
         _currCooldown = 0;
         Shoot();
     }
 
-    //this will be abstract?
     void Shoot()
     {
         Bullet bullet = Instantiate(BulletPrefab);
 
+        //no aimer might be possible in the case of an AOE bullet
         Quaternion rotation;
         if (_aimer == null)
             rotation = Quaternion.identity;
@@ -82,7 +84,6 @@ public class Tower : MonoBehaviour//make it generic and accept scriptable object
             rotation: rotation
         );
 
-        //bullet.transform.forward = rotation * Vector3.forward ;
 
         bullet.Sender = this;
         bullet.Init();

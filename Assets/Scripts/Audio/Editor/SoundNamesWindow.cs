@@ -1,6 +1,6 @@
 using UnityEditor;
 using UnityEngine;
-
+//easier way to acces SoundNames. You can use the scriptable object too
 public class SoundNamesWindow : EditorWindow
 {
     [MenuItem("Stefan/SoundNames")]
@@ -13,13 +13,8 @@ public class SoundNamesWindow : EditorWindow
 
     private void OnGUI()
     {
-        SoundNamesContainer container = Resources.Load("SoundNames") as SoundNamesContainer;
+        SoundNamesContainer container = SoundNamesContainer.Instance;
 
-        if(container == null)
-        {
-            EditorGUILayout.LabelField("There is no SoundNamesContainer Scriptable Object called SoundNames in Resources folder!");
-            return;
-        }
         SerializedObject so = new (container);
         SerializedProperty stringsProperty = so.FindProperty("Names");
 

@@ -1,5 +1,11 @@
 using UnityEngine;
 using UnityEngine.Events;
+//to allow polymorphic lists in the inspector
+[System.Serializable]
+public abstract class Stat
+{
+
+}
 
 [System.Serializable]
 public abstract class Stat<T> : Stat
@@ -26,13 +32,6 @@ public abstract class Stat<T> : Stat
             _currentValue = value;
             CurrentUpdated?.Invoke(copy, this);
         }
-    }
-
-    public void Update()
-    {
-        CurrentUpdated = CurrentUpdated;
-        OriginalUpdated = OriginalUpdated;
-        MaxUpdated = MaxUpdated;
     }
 
     public T OriginalValue
@@ -66,14 +65,14 @@ public abstract class Stat<T> : Stat
             MaxUpdated?.Invoke(copy, this);
         }
     }
+    //a way to solve having default properties and also allow for polymorphism
+    protected virtual void OnCurrentValueGet(ref T val) {}
+    protected virtual void OnOriginalValueGet(ref T val) { }
+    protected virtual void OnMaxValueGet(ref T val) { }
 
-    public virtual void OnCurrentValueGet(ref T val) {}
-    public virtual void OnOriginalValueGet(ref T val) { }
-    public virtual void OnMaxValueGet(ref T val) { }
-
-    public virtual void OnCurrentValueSet(ref T val) { }
-    public virtual void OnOriginalValueSet(ref T val) { }
-    public virtual void OnMaxValueSet(ref T val) { }
+    protected virtual void OnCurrentValueSet(ref T val) { }
+    protected virtual void OnOriginalValueSet(ref T val) { }
+    protected virtual void OnMaxValueSet(ref T val) { }
 
     public override string ToString()
     {
@@ -81,8 +80,3 @@ public abstract class Stat<T> : Stat
     }
 }
 
-[System.Serializable]
-public abstract class Stat
-{
-
-}

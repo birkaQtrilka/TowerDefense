@@ -1,6 +1,8 @@
 using System.Collections;
 using UnityEngine;
-
+/// <summary>
+/// simpli spawns every enemy in order 
+/// </summary>
 public class LinearEnemySpawner : EnemySpawner
 {
     protected override IEnumerator SpawnWave(EnemyWave wave)

@@ -5,9 +5,6 @@ using UnityEngine;
 [RequireComponent(typeof(Tower))]
 public class TowerUpgrader : MonoBehaviour
 {
-    //previous upgrade, current upgrade
-    //[field: SerializeField] public UnityEvent<TowerUpgrader, TowerUpgrader> Upgraded { get; private set; }
-
     public static event Action<TowerUpgrader, TowerUpgrader> Upgraded;
 
     //upgrade data
@@ -16,10 +13,9 @@ public class TowerUpgrader : MonoBehaviour
 
     [field: SerializeField] public int UpgradeCost { get; private set; }
 
-    public TowerData Data => _data;
+    public TowerData Data { get; private set; }
     public Tower Tower => _instance;
 
-    TowerData _data;
     int _currentUpdate;
     Tower _instance;
     //to prevent setting the same value every frame
@@ -27,9 +23,10 @@ public class TowerUpgrader : MonoBehaviour
 
     public void Init(TowerData data, int currentIndex)
     {
-        _data = data;
+        Data = data;
         _currentUpdate = currentIndex;
         _instance = GetComponent<Tower>();
+
         CanUpgradeVisual = Instantiate(CanUpgradeVisual, transform);
         _lastCanShowUpgradeValue = CheckCanShowUpdate();
         CanUpgradeVisual.SetActive(_lastCanShowUpgradeValue);
@@ -38,17 +35,18 @@ public class TowerUpgrader : MonoBehaviour
 
     public void DoUpgrade()
     {
-        if (_currentUpdate >= _data.UpgradeList.Length - 1) return;
+        if (_currentUpdate >= Data.UpgradeList.Length - 1) return;
+        //the upgrade method will be called if the listener to this event allows it
         EventBus<TryBuy>.Publish(new TryBuy(UpgradeCost, Upgrade));
     }
 
     void Upgrade()
     {
-        var upgradedInstance = Instantiate(_data.UpgradeList[++_currentUpdate]);
+        var upgradedInstance = Instantiate(Data.UpgradeList[++_currentUpdate]);
 
         var nextUpgrader = upgradedInstance.GetComponent<TowerUpgrader>();
         if (nextUpgrader != null)
-            nextUpgrader.Init(_data, _currentUpdate);
+            nextUpgrader.Init(Data, _currentUpdate);
         Upgraded?.Invoke(this, nextUpgrader);
         Destroy(_instance.gameObject);
     }
@@ -56,8 +54,8 @@ public class TowerUpgrader : MonoBehaviour
 
     bool CheckCanShowUpdate()
     {
-        return _data != null &&
-            _currentUpdate < _data.UpgradeList.Length - 1 &&
+        return Data != null &&
+            _currentUpdate < Data.UpgradeList.Length - 1 &&
             Store.Instance != null &&
             UpgradeCost <= Store.Instance.Money.CurrentValue &&
             GameManager.Instance != null &&

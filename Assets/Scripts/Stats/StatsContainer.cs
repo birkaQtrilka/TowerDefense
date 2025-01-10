@@ -1,9 +1,10 @@
-﻿
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System;
 using UnityEngine;
 using System.Linq;
 
+//just a wrapper class to be able to have a custom property drawer
+//apparently you cannot have something like CustomPropertyDrower(typeof(List<Stat>))
 [Serializable]
 public class StatsContainer
 {
@@ -16,16 +17,6 @@ public class StatsContainer
         //if(_statsDictionary == null)
 
     }
-
-    //void BuildDictionary()
-    //{
-    //    _statsDictionary = new();
-
-    //    foreach (Stat stat in stats) 
-    //    {
-    //        _statsDictionary.Add(stat.GetType(), stat);
-    //    }
-    //}
 
     public void DoForEach(Action<Stat> method)
     {

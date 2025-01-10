@@ -1,22 +1,26 @@
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+/// <summary>
+/// Manages the Money and the buying validation
+/// </summary>
 public class Store : MonoBehaviour
 {
-
-    StoreSlot[] _slots;
-    [SerializeField] Button _startGameBtn;
-    [field: SerializeField] public CarriedMoney Money { get; private set; }
-
-    [SerializeField] TowerDataUI _ui;
-    [SerializeField] TowerPlacer _towerPlacer;
-
     public static Store Instance { get; private set; }
 
+    [field: SerializeField] public CarriedMoney Money { get; private set; }
+
+    //it's outside the hierarchy of the store because elsewise it would react to screen res change weirdly
+    [SerializeField] Button _startGameBtn;
+    [SerializeField] TowerDataUI _ui;
+    //to equip a tower on selection
+    [SerializeField] TowerPlacer _towerPlacer;
+
+    //for testing
     public bool InfiniteMoney { get; set; }
 
+    //its for when the infinite is turned off, you have the old amount of money back
     int _moneyBeforeInfinite = -1;
+    StoreSlot[] _slots;
 
     void Awake()
     {
@@ -33,6 +37,7 @@ public class Store : MonoBehaviour
 
         Money.CurrentUpdated.AddListener(UpdateVisual);
 
+        //subscribes to event in order to validate if you can buy an item
         EventBus<TryBuy>.Event += BuyResponse;
 
         foreach (var slot in _slots)
@@ -107,9 +112,10 @@ public class Store : MonoBehaviour
         Money.CurrentValue += amount;
     }
 
-
     void Update()
     {
+        //this if else hell is to make it so the Money is set for only one frame, to prevent calling the 
+        //OnCurrentUpdate every frame and to prevent constant UI updates
         if(InfiniteMoney)
         {
             if(Money.CurrentValue != 999999)

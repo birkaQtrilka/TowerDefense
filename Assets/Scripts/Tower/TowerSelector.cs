@@ -1,16 +1,17 @@
 using System.Collections.Generic;
-using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
+//checks for tower hits and activates a data displayer
 public class TowerSelector : MonoBehaviour
 {
+    //to make it easier to hit towers
     [SerializeField] float _sphereCastRadius;
     [SerializeField] LayerMask _selectionLayer;
     Camera _camera;
 
     SelectionVisual _currentSelection;
-    List<RaycastResult> _hits = new List<RaycastResult>();
+    readonly List<RaycastResult> _hits = new();
 
     void Start()
     {
@@ -68,7 +69,7 @@ public class TowerSelector : MonoBehaviour
             Select(hitSelection);
         }
     }
-    //same issue as before, upgrader destroys tower, so I can't deselect
+
     public void Deselect()
     {
         if (_currentSelection != null)
@@ -83,10 +84,11 @@ public class TowerSelector : MonoBehaviour
         _currentSelection = visual;
         _currentSelection.Select();
     }
-
+    //since upgrading works by destroying old version and spawning a new one, the selection must react
     void OnUpgrade(TowerUpgrader old, TowerUpgrader current)
     {
         SelectionVisual oldVisual = old.GetComponent<SelectionVisual>();
+        //the event is static so I must check if the upgraded tower is also the selected one
         if (oldVisual == _currentSelection)
         {
             Deselect();
@@ -97,6 +99,7 @@ public class TowerSelector : MonoBehaviour
     void OnSell(Tower tower)
     {
         SelectionVisual selection = tower.GetComponent<SelectionVisual>();
+        //the event is static so I must check if the sold tower is also the selected one
         if (selection == _currentSelection)
         {
             Deselect();

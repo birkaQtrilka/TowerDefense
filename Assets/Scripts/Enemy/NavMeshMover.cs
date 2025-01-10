@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.AI;
-
+/// <summary>
+/// Moves object according to a configured nav mesh and nav agent
+/// </summary>
 [RequireComponent (typeof(NavMeshAgent))]
 public class NavMeshMover : MonoBehaviour, IMover
 {
@@ -21,6 +23,7 @@ public class NavMeshMover : MonoBehaviour, IMover
 
     public void SetMoveSpeed(float speed)
     {
+        //to prevent errors if the speed is set before SetActive is true
         if(_navAgent == null)
             _navAgent = GetComponent<NavMeshAgent>();
 

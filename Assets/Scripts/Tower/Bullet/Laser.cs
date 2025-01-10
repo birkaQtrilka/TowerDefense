@@ -1,22 +1,22 @@
 using UnityEngine;
-using System.Linq;
+/// <summary>
+/// HitScan bullet. raycast hit and drawn with a line renderer
+/// </summary>
 public class Laser : Bullet
 {
     readonly RaycastHit[] _results = new RaycastHit[10];
     [SerializeField] LineRenderer _lineRenderer;
-    Vector3[] _positions = new Vector3[2];
-    [SerializeField] LayerMask layers;
+    [SerializeField] LayerMask _canAttackMask;
+
+    readonly Vector3[] _positions = new Vector3[2];
 
     public override void Init()
     {
-        Debug.DrawRay(transform.position, transform.forward * Sender.Stats.GetStat<Range>().CurrentValue, Color.green, 1);
-        //Debug.Break();
         int count = Physics.RaycastNonAlloc(
             new Ray(transform.position, transform.forward), 
             _results, 
-            100,
-            //Sender.Stats.GetStat<Range>().CurrentValue,
-            layers,
+            Sender.Stats.GetStat<Range>().CurrentValue,
+            _canAttackMask,
             QueryTriggerInteraction.Collide
         );
         if (count <= 0) return;

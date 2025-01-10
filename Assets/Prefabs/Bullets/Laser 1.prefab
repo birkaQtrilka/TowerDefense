@@ -82,7 +82,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   _lineRenderer: {fileID: 7147873838526707818}
-  layers:
+  _canAttackMask:
     serializedVersion: 2
     m_Bits: 512
 --- !u!114 &1953782454869051473

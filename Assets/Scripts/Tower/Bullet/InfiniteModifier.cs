@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-
+//for testing
 public class InfiniteModifier : MonoBehaviour, IDamageModifier
 {
     public int Modify(BulletDamager damager)

@@ -1,7 +1,9 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
-
+/// <summary>
+/// spawns text that flies up and wobbles
+/// </summary>
 public abstract class TextPopUpSpawner : MonoBehaviour
 {
 
@@ -20,7 +22,7 @@ public abstract class TextPopUpSpawner : MonoBehaviour
         txt.text = str;
         txt.StartCoroutine(TextUpdate(txt));
     }
-
+    //put in a coroutine to prevent from useles bool checks
     IEnumerator TextUpdate(TextMeshPro txt)
     {
         float currTime = 0;

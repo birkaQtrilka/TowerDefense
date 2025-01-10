@@ -1,4 +1,6 @@
 using UnityEngine;
+
+//just a class that is responsible for handling death, right now it's pretty empty
 [RequireComponent(typeof(Enemy))]
 public class EnemyDeathHandler : MonoBehaviour
 {

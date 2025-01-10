@@ -1,14 +1,16 @@
 using System;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+
 [Serializable]
 struct LevelData
 {
     public bool Unlocked;
     public string Name;
 }
-
+/// <summary>
+/// Responsible to moving through scenes
+/// </summary>
 public class LevelsManager : MonoBehaviour
 {
     public static LevelsManager Instance { get; private set; }
@@ -16,9 +18,10 @@ public class LevelsManager : MonoBehaviour
 
     [SerializeField] LevelData[] _levels;
 
+    //it's for a continue feature, so you don't have to go to the levels scene all the time
     int _farthestLevel ;
     int _currLevel;
-    
+    //keeps track of the _levels index and not the scene build index
     public int CurrLevel 
     { 
         get { 
@@ -43,7 +46,7 @@ public class LevelsManager : MonoBehaviour
 
     void OnEnable()
     {
-
+        //get's the current level index automatically, so I don't have to set it manually in the inspector
         string lvlName = SceneManager.GetActiveScene().name;
         int i = 0;
         bool found = false;
@@ -64,14 +67,19 @@ public class LevelsManager : MonoBehaviour
         if (CurrLevel + 1 >= _levels.Length) return;
         _levels[CurrLevel+1].Unlocked = true;
     }
-
+    /// <summary>
+    /// changes to next level scene if available
+    /// </summary>
     public void NextLevel()
     {
         if (CurrLevel + 1 >= _levels.Length) return;
 
         GoToLevel(_levels[++CurrLevel].Name);
     }
-
+    /// <summary>
+    /// Goes to level by name if it exists
+    /// </summary>
+    /// <param name="lvlName"></param>
     public void GoToLevel(string lvlName)
     {
         int i = 0;
@@ -84,25 +92,32 @@ public class LevelsManager : MonoBehaviour
         CurrLevel = i;
         SceneManager.LoadScene(lvlName);
     }
-
+    /// <summary>
+    /// Goes to level by index if it exists
+    /// </summary>
+    /// <param name="lvlName"></param>
     public void TryGoToLevel(int level)
     {
         if (level < 0 || level >= _levels.Length || !_levels[level].Unlocked) return;
 
         GoToLevel(level);
     }
-
+    /// <summary>
+    /// Goes to level by index, doesn't do a contains check
+    /// </summary>
+    /// <param name="level"></param>
     public void GoToLevel(int level)
     {
         CurrLevel = level;
         GoToLevel(_levels[CurrLevel].Name);
     }
-
+    ///
     public bool LevelIsCompleted(int level)
     {
         return _levels[level].Unlocked;
     }
 
+    //used for scenes outside the levels
     public void GoToMainMenu()
     {
         SceneManager.LoadScene(0);
@@ -122,12 +137,10 @@ public class LevelsManager : MonoBehaviour
     {
         Application.Quit();
     }
-
-    public void GoNextLevel()
-    {
-        GoToLevel(CurrLevel+1);
-    }
-
+    
+    /// <summary>
+    /// Goes to the highest visited level
+    /// </summary>
     public void GoToFarthestLevel()
     {
         GoToLevel(_farthestLevel);

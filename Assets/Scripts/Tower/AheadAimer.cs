@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class AheadAimer : Aimer
@@ -8,12 +9,11 @@ public class AheadAimer : Aimer
 
     public override Quaternion GetAttackLook(Bullet bullet, IEnumerable<Transform> targets)
     {
-        Transform firstTarget = null;
-        foreach (Transform t in targets)
-            if (t != null)
-                firstTarget = t;
+        Transform firstTarget = targets.FirstOrDefault();
         if (firstTarget == null) return DefaultRotation;
-        //every frame? not good;
+        
+
+        //this function is called every frame, so I cache the mover component. 
         if(firstTarget != _cachedTarget)
         {
             _cachedTarget = firstTarget;

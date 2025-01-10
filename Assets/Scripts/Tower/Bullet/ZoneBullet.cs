@@ -1,5 +1,5 @@
 using UnityEngine;
-
+//a bullet that doesn't move  and is just a standing zone 
 [RequireComponent (typeof(Collider))]
 public class ZoneBullet : Bullet
 {

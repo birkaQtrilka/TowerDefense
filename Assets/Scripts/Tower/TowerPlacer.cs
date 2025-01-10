@@ -8,6 +8,7 @@ public class TowerPlacer : MonoBehaviour
     [SerializeField] LayerMask _tileMask;
 
     TowerData _currentSelection;
+    //it's for deselecting previous tiles
     TowerPlaceSpot _prevPlace;
     Camera _camera;
 
@@ -54,8 +55,7 @@ public class TowerPlacer : MonoBehaviour
             !hit.transform.TryGetComponent(out TowerPlaceSpot selection)
            )
         {
-            if(clicked)
-                Deselect();
+            if(clicked)  Deselect();
             return; 
         }
 
@@ -63,13 +63,19 @@ public class TowerPlacer : MonoBehaviour
         _prevPlace = selection;
 
         if (!clicked || selection.HoldingTower != null) return;
-        
-        Tower inst = Instantiate(_currentSelection.Prefab);
-        inst.GetComponent<TowerUpgrader>().Init(_currentSelection, currentIndex: 0);
-        selection.PlaceTower(inst);
 
-        TowerPlaced?.Invoke(_currentSelection);
+        PlaceSelectedTower(selection);
+
         Deselect();
     }
 
+
+    void PlaceSelectedTower(TowerPlaceSpot placeSpot)
+    {
+        Tower inst = Instantiate(_currentSelection.Prefab);
+        inst.GetComponent<TowerUpgrader>().Init(_currentSelection, currentIndex: 0);
+        placeSpot.PlaceTower(inst);
+
+        TowerPlaced?.Invoke(_currentSelection);
+    }
 }

@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.Events;
-
+/// <summary>
+/// Decides if the enemies reached the finish
+/// </summary>
 public class EndPoint : MonoBehaviour
 {
     

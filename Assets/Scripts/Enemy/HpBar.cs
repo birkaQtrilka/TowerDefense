@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.UI;
-
+/// <summary>
+/// A world overlay canvas way of representing hp
+/// </summary>
 public class HpBar : MonoBehaviour
 {
     [SerializeField] Image _fill;

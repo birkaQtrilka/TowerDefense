@@ -1,6 +1,8 @@
 ﻿using TMPro;
 using UnityEngine;
-
+/// <summary>
+/// visualises tower data as floating text
+/// </summary>
 public class Tower3DSelection : SelectionVisual
 {
     [SerializeField] GameObject _visual;

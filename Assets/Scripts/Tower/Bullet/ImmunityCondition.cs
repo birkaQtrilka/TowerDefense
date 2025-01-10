@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+//for testing
 public class ImmunityCondition : MonoBehaviour, IDamageCondition
 {
 

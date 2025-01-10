@@ -1,6 +1,8 @@
 ﻿using System;
 using UnityEngine;
-//used in dictionary to preset certain clip values before playing them
+/// <summary>
+/// used in dictionary to preset certain clip values before playing them
+/// </summary>
 [Serializable]
 public class SoundData
 {

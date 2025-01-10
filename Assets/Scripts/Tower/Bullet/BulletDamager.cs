@@ -1,14 +1,16 @@
 using System.Linq;
 using UnityEngine;
-using UnityEngine.Rendering.VirtualTexturing;
-
+/// <summary>
+/// Does damage to enemy
+/// </summary>
 [RequireComponent(typeof(Bullet))]
 public class BulletDamager : MonoBehaviour
 {
     public Damage Damage;
+    //every condition must be true
     IDamageCondition[] _conditions;
+    //modifiers are added up to then get the final damage
     IDamageModifier[] _modifiers;
-
     Bullet _bullet;
     void Awake()
     {
@@ -30,8 +32,6 @@ public class BulletDamager : MonoBehaviour
 
     void DoDamage(Tower sender, Enemy victim)
     {
-        //get tower damage stat?
-
         //CAN DO:
         //if enemy is water type and tower damage is fire type, do no damage etc.
         if (_conditions.All(c => c.CanDamage(sender, victim)))

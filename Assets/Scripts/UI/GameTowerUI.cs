@@ -15,7 +15,6 @@ public class GameTowerUI : MonoBehaviour
 
     TowerUpgrader _currUpgrader;
 
-    //on upgrade, the object gets destroyed, but I'm still looking at the the same upgrade. Needs to update on upgrade?
     public void UpdateVisual(Tower tower)
     {
         TowerUpgrader upgrader = tower.GetComponent<TowerUpgrader>();
@@ -25,7 +24,6 @@ public class GameTowerUI : MonoBehaviour
 
     public void UpdateVisual(TowerUpgrader upgrader)
     {
-
         Tower tower = upgrader.Tower;
 
         _selectionImg.sprite = upgrader.UiImage;
@@ -51,7 +49,7 @@ public class GameTowerUI : MonoBehaviour
     {
         _currUpgrader.DoUpgrade();
     }
-
+    //on upgrade, the object gets destroyed, so I need to update the values to the new tower
     void OnUpgrade(TowerUpgrader old, TowerUpgrader current)
     {
         if(_currUpgrader == old)

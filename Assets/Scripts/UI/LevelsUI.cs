@@ -21,11 +21,7 @@ public class LevelsUI : MonoBehaviour
 
     void Start()
     {
-        for (int i = 0; i < _levelButtons.Length; i++)
-        {
-            if (LevelsManager.Instance.LevelIsCompleted(i))
-                _levelButtons[i].transform.Find("Image").GetComponent<Image>().gameObject.SetActive(false);
-        }
+        SetLevelToLockedVisuals();
     }
 
     void OnDisable()
@@ -33,6 +29,15 @@ public class LevelsUI : MonoBehaviour
         for (int i = 0; i < _levelButtons.Length; i++)
         {
             _levelButtons[i].onClick.RemoveAllListeners();
+        }
+    }
+
+    void SetLevelToLockedVisuals()
+    {
+        for (int i = 0; i < _levelButtons.Length; i++)
+        {
+            if (LevelsManager.Instance.LevelIsCompleted(i))
+                _levelButtons[i].transform.Find("Image").GetComponent<Image>().gameObject.SetActive(false);
         }
     }
 }

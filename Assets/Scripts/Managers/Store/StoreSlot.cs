@@ -2,6 +2,9 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// UI of each item in store
+/// </summary>
 [RequireComponent (typeof(Button))]
 public class StoreSlot : MonoBehaviour
 {

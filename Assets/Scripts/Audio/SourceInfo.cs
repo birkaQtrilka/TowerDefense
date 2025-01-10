@@ -1,6 +1,8 @@
 ﻿using System;
 using UnityEngine;
-//simple wrapper class to have a way to access sounds that have the same name 
+/// <summary>
+/// simple wrapper class to have a way to access sounds that have the same name 
+/// </summary>
 [Serializable]
 class SourceInfo
 {

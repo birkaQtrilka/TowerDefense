@@ -3,6 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Bullet that is affected by gravity
+/// </summary>
 [RequireComponent (typeof(Rigidbody))]
 public class Projectile : Bullet
 {
@@ -12,6 +15,7 @@ public class Projectile : Bullet
     [SerializeField] int _pierce = 1;
     int _currPierce;
     readonly Queue<IEnumerator> _beforeDeathQueue = new();
+    //so it doesn't hit new enemies during an animation or other process
     bool _isDead;
 
     Rigidbody _rb;
@@ -37,6 +41,7 @@ public class Projectile : Bullet
     public void AddBeforeDeathAction(IEnumerator action, out Action<Enemy> OnHitEventCaller)
     {
         _beforeDeathQueue.Enqueue(action);
+        //allows for other classes to call OnHit at the specific time of death
         OnHitEventCaller = CallOnHitEvent;
     }
 

@@ -1,6 +1,8 @@
-using System.Collections;
 using UnityEngine;
 
+/// <summary>
+/// Responsible for placing the tower in a correct way. Handles when the tower is sold or swapped
+/// </summary>
 public class TowerPlaceSpot : MonoBehaviour
 {
     [SerializeField] GameObject _hoverVisual;
@@ -19,7 +21,8 @@ public class TowerPlaceSpot : MonoBehaviour
         TowerUpgrader.Upgraded -= OnTowerUpgraded;
 
     }
-
+    
+    //since the event is static, we need to first check if our tower is upgraded
     void OnTowerUpgraded(TowerUpgrader old, TowerUpgrader current)
     {
         if (old.Tower == HoldingTower)

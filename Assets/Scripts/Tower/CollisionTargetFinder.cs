@@ -1,12 +1,13 @@
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 public class CollisionTargetFinder : TargetFinder
 {
     [SerializeField] List<Transform> _targets = new();
     SphereCollider _collider;
+
     public override float Range { get => _collider.radius; set => _collider.radius = value; }
+
     void Awake()
     {
         _collider = GetComponent<SphereCollider>();
@@ -26,8 +27,8 @@ public class CollisionTargetFinder : TargetFinder
     public override Transform GetSingleTarget()
     {
         //apparently ontrigger exit is not called when the object is destroyed so I need to cleanup the queue
-        while (_targets.Count != 0 && _targets[^1] == null)
-            _targets.RemoveAt(_targets.Count - 1);
+        CleanUpQueue();
+
         if (_targets.Count == 0)
             return null;
         return _targets[^1];
@@ -35,7 +36,6 @@ public class CollisionTargetFinder : TargetFinder
 
     void OnTriggerEnter(Collider other)
     {
-        //if(other.gameObject.layer == LayerMask.NameToLayer("Enemy")) 
         _targets.Add(other.transform);
     }
     
@@ -43,13 +43,17 @@ public class CollisionTargetFinder : TargetFinder
     void OnTriggerExit(Collider other)
     {
         //apparently ontrigger exit is not called when the object is destroyed so I need to cleanup the queue
-        //if (other.gameObject.layer != LayerMask.NameToLayer("Enemy")) return;
-        //Debug.Log("exited " + other.gameObject);
-        while (_targets.Count != 0 && _targets[^1] == null)
-            _targets.RemoveAt(_targets.Count - 1);
+        CleanUpQueue();
+
         if (_targets.Count != 0)
             _targets.RemoveAt(0);
 
+        CleanUpQueue();
+
+    }
+
+    void CleanUpQueue()
+    {
         while (_targets.Count != 0 && _targets[^1] == null)
             _targets.RemoveAt(_targets.Count - 1);
     }

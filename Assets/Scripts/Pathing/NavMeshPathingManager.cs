@@ -6,6 +6,7 @@ public class NavMeshPathingManager : PathingManager
     [Header("It will shoot a ray in forward direction and set the hit as destination")]
     [SerializeField] GameObject _destinationRay;
     [SerializeField] GameObject _startRay;
+    //layermask for the ray 
     [SerializeField] LayerMask _layerMask;
     public override Vector3 GetDestination()
     {

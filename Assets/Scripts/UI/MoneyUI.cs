@@ -15,7 +15,7 @@ public class MoneyUI : MonoBehaviour
             UpdateVisual(Store.Instance.Money.CurrentValue);
         }));
     }
-
+    //I need to wait untill the store spawns
     IEnumerator WhenAllocated(Action action)
     {
         var condition = new WaitUntil(() => Store.Instance != null);
