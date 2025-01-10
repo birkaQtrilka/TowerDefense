@@ -172,6 +172,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1015125679411297793, guid: 89c7e611580885e4289f59d44f9f14af,
         type: 3}
+      propertyPath: <UiImage>k__BackingField
+      value: 
+      objectReference: {fileID: 21300000, guid: f2a05d061b331f547b18721174880b1d,
+        type: 3}
+    - target: {fileID: 1015125679411297793, guid: 89c7e611580885e4289f59d44f9f14af,
+        type: 3}
       propertyPath: <UpgradeCost>k__BackingField
       value: 200
       objectReference: {fileID: 0}

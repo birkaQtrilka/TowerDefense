@@ -339,6 +339,12 @@ PrefabInstance:
       propertyPath: <SellPrice>k__BackingField
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 7223423612517962538, guid: f777384f298122b4f9d8417d74eafedb,
+        type: 3}
+      propertyPath: <UiImage>k__BackingField
+      value: 
+      objectReference: {fileID: 21300000, guid: 67b44e046702d63408278821bf687684,
+        type: 3}
     - target: {fileID: 8793763968560764133, guid: f777384f298122b4f9d8417d74eafedb,
         type: 3}
       propertyPath: _rotationSpeed

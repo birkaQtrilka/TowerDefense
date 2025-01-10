@@ -58,10 +58,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3383550496854697700, guid: ef5fafb1d4559ed4983134e636d6691b,
+        type: 3}
+      propertyPath: m_AgentTypeID
+      value: -1372625422
+      objectReference: {fileID: 0}
+    - target: {fileID: 3855588082286089679, guid: ef5fafb1d4559ed4983134e636d6691b,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 1.575
+      objectReference: {fileID: 0}
     - target: {fileID: 9205730846547285193, guid: ef5fafb1d4559ed4983134e636d6691b,
         type: 3}
       propertyPath: m_Name
-      value: FlierEnemy Variant
+      value: FlierEnemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -170,7 +180,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8697059400483012398}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c3550ad7c15f94b4195df2ef14dcb40c, type: 3}
   m_Name: 
@@ -178,3 +188,5 @@ MonoBehaviour:
   _amplitude: 0.1
   _frequency: 1
   _direction: {x: 0, y: 1, z: 0}
+  _rotationAxis: {x: 0, y: 0, z: 0}
+  _rotationSpeed: 0

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2466169621470830444}
   - component: {fileID: 2179053738114451109}
   - component: {fileID: 637904145844846520}
+  - component: {fileID: 398273662981423833}
   m_Layer: 0
   m_Name: CanUpgradeVisual
   m_TagString: Untagged
@@ -83,3 +84,15 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &398273662981423833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6382348633982908727}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5ec3e974ce6eba429244a8487a5a8ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

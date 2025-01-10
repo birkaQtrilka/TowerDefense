@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65caa95efaff5854094d5a157ed2fa29, type: 3}
+  m_Name: Zone
+  m_EditorClassIdentifier: 
+  <Name>k__BackingField: Zone
+  <Price>k__BackingField: 10
+  <StoreSlotImage>k__BackingField: {fileID: 21300000, guid: e4c6d414440199d4488071371789b459,
+    type: 3}
+  <SelectionImage>k__BackingField: {fileID: 21300000, guid: e4c6d414440199d4488071371789b459,
+    type: 3}
+  <Description>k__BackingField: Slows down enemies that enter the zone
+  <UpgradeList>k__BackingField:
+  - {fileID: 6293539212661847513, guid: 89c7e611580885e4289f59d44f9f14af, type: 3}
+  - {fileID: 4431426026187380978, guid: f777384f298122b4f9d8417d74eafedb, type: 3}
+  - {fileID: 8291610035176290521, guid: e29c08c49be18e148b79987ffb800e42, type: 3}

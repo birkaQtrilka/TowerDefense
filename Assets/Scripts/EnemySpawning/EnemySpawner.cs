@@ -14,16 +14,22 @@ public abstract class EnemySpawner : MonoBehaviour
     [field: SerializeField] public UnityEvent<int, int> ValuesChanged { get; private set; }
 
     [SerializeField] protected PathingManager pathingManager;
-    [SerializeField] protected EnemyWave[] waves;
+    [SerializeField] WavesAsset _wavesContainer;
+    EnemyWave[] _waves;
 
     public int CurrentWave { get; protected set; }
-    public int TotalWaves => waves.Length;
+    public int TotalWaves => _waves.Length;
     /// <summary>
     /// to prevent recalculating the position on every enemy spawn
     /// </summary>
     Vector3 _cahcedStartPosition;
     //keeping track to know when to finish the level
     readonly List<Enemy> _spawnedEnemies = new();
+
+    void Awake()
+    {
+        _waves = _wavesContainer.GetWaves();
+    }
 
     /// <summary>
     /// starts up the wave
@@ -73,11 +79,11 @@ public abstract class EnemySpawner : MonoBehaviour
     /// <returns></returns>
     IEnumerator SpawnWavesCR()
     {
-        if (CurrentWave > waves.Length - 1) yield break;
+        if (CurrentWave > _waves.Length - 1) yield break;
 
-        yield return SpawnWave(waves[CurrentWave]);
+        yield return SpawnWave(_waves[CurrentWave]);
         CurrentWave++;
-        ValuesChanged?.Invoke(CurrentWave, waves.Length);
+        ValuesChanged?.Invoke(CurrentWave, _waves.Length);
         
         yield return new WaitUntil(()=> _spawnedEnemies.Count == 0);
 
