@@ -238,8 +238,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _soundName:
-    Name: ZoneShoot
-    PopUpIndexOfChosenName: 2
+    Name: LaserShoot
+    PopUpIndexOfChosenName: 1
   _volume: 0.2
 --- !u!114 &6293539212661847513
 MonoBehaviour:

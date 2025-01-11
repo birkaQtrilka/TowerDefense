@@ -41,3 +41,10 @@ MonoBehaviour:
       Volume: 0.01
       Clip: {fileID: 8300000, guid: 9f59479338e86b34087ed5e674bf3b44, type: 3}
       Loop: 0
+  - name:
+      Name: MainMusic
+      PopUpIndexOfChosenName: 4
+    data:
+      Volume: 0.1
+      Clip: {fileID: 8300000, guid: 60aa545ae8bd25a4e9806f4c12664a37, type: 3}
+      Loop: 1

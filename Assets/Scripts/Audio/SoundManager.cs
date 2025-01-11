@@ -38,7 +38,7 @@ public class SoundManager : MonoBehaviour
 
     //to stop actively playing sounds
     int _currentID;
-    [SerializeField, Range(0, 1)] float _masterVolume;
+    [SerializeField, Range(0, 1)] float _masterVolume =1;
     //the container with sounds
     [SerializeField] Sounds _data;
 
