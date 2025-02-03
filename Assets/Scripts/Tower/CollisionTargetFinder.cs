@@ -3,8 +3,10 @@ using UnityEngine;
 
 public class CollisionTargetFinder : TargetFinder
 {
-    [SerializeField] List<Transform> _targets = new();
+    readonly Queue<Transform> _targets = new();
     SphereCollider _collider;
+    
+    //[SerializeField] List<Transform> _test;
 
     public override float Range { get => _collider.radius; set => _collider.radius = value; }
 
@@ -15,6 +17,7 @@ public class CollisionTargetFinder : TargetFinder
 
     public override IEnumerable<Transform> GetAvailableTargets()
     {
+        CleanUpQueue();
         return _targets;
     }
     
@@ -24,6 +27,12 @@ public class CollisionTargetFinder : TargetFinder
         Range = range.CurrentValue;
     }
 
+    void Update()
+    {
+        CleanUpQueue();
+        //_test = new(_targets);
+    }
+
     public override Transform GetSingleTarget()
     {
         //apparently ontrigger exit is not called when the object is destroyed so I need to cleanup the queue
@@ -31,12 +40,12 @@ public class CollisionTargetFinder : TargetFinder
 
         if (_targets.Count == 0)
             return null;
-        return _targets[^1];
+        return _targets.Peek();
     }
 
     void OnTriggerEnter(Collider other)
     {
-        _targets.Add(other.transform);
+        _targets.Enqueue(other.transform);
     }
     
 
@@ -46,7 +55,7 @@ public class CollisionTargetFinder : TargetFinder
         CleanUpQueue();
 
         if (_targets.Count != 0)
-            _targets.RemoveAt(0);
+            _targets.Dequeue();
 
         CleanUpQueue();
 
@@ -54,7 +63,7 @@ public class CollisionTargetFinder : TargetFinder
 
     void CleanUpQueue()
     {
-        while (_targets.Count != 0 && _targets[^1] == null)
-            _targets.RemoveAt(_targets.Count - 1);
+        while (_targets.Count != 0 && _targets.Peek() == null)
+            _targets.Dequeue();
     }
 }
