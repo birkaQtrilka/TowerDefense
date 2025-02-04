@@ -1,9 +1,12 @@
 using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class TowerPlacer : MonoBehaviour
 {
     public static event Action<TowerData> TowerPlaced;
+    [field: SerializeField] public UnityEvent<TowerData> TowerSelected { get; private set; }
+    [field: SerializeField]public UnityEvent<TowerData> TowerDeselected { get; private set; }
 
     [SerializeField] LayerMask _tileMask;
 
@@ -15,12 +18,16 @@ public class TowerPlacer : MonoBehaviour
     public void SelectTower(TowerData data)
     {
         _currentSelection = data;
+        TowerSelected?.Invoke(data);
     }
 
     public void Deselect()
     {
+        TowerDeselected?.Invoke(_currentSelection);
+
         TowerPlaced = null;
         _currentSelection = null;
+
     }
 
     void OnEnable()
