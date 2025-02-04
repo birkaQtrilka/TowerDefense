@@ -7,7 +7,7 @@ public class ReflectionStateFactory<T> : StateFactory<T> where T : IStateMachine
 {
     public override Dictionary<Type, State<T>> GetStates()
     {
-        Type abstractClass = typeof(State);
+        Type abstractClass = typeof(BaseState);
 
         return Assembly.GetAssembly(abstractClass)
             .GetTypes()

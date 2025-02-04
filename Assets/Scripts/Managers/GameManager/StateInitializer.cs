@@ -1,13 +1,12 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-
+/// <summary>
+/// Used for injecting data that is only alive in the scene (runtime)
+/// </summary>
 [RequireComponent(typeof(GameManager))]
 public class StateInitializer : MonoBehaviour
 {
-    //get factory dictionary
-    //create serializable list for inspector
-    //initialize based of the list
     [SerializeField] GameManagerReflectionFactory _reflectionFactory;
 
     void Awake()
@@ -26,16 +25,4 @@ public class StateInitializer : MonoBehaviour
             state.Init(manager);
         }
     }
-}
-
-[Serializable]
-public class StateInitData
-{
-    [InspectorReadOnly]
-    public string Name;
-
-    public int Priority;
-
-
-    
 }

@@ -1,13 +1,5 @@
-using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
-[Serializable]
-struct LevelData
-{
-    public bool Unlocked;
-    public string Name;
-}
 /// <summary>
 /// Responsible to moving through scenes
 /// </summary>

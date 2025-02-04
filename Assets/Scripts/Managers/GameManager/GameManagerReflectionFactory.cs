@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-
+/// <summary>
+/// Creates the states via reflection and allows data to be set via inspector
+/// </summary>
 [CreateAssetMenu(menuName = "Stefan/StateFactory/UsingReflection")]
 public class GameManagerReflectionFactory : ReflectionStateFactory<GameManager>
 {

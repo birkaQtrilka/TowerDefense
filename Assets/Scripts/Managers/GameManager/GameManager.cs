@@ -4,7 +4,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using UnityEngine;
 //Manages Game states
-//[RequireComponent()]
 public class GameManager : MonoBehaviour, IStateMachine
 {
     public static GameManager Instance { get; private set; }

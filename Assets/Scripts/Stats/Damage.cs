@@ -7,9 +7,3 @@ public class Damage : Stat<int>
         if (val < 0) val = 0;
     }
 }
-public enum DamageType
-{
-    Fire,
-    Ice,
-    Water
-}

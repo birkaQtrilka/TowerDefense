@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-//for testing
+//used for testing
 public class Debugging : MonoBehaviour
 {
     public static Debugging Instance { get; private set; }
