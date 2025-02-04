@@ -1,6 +1,6 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+
 //deprecated, it's a gameobject that is scaling up. Use particle system instead
 public class ZoneVisual : MonoBehaviour
 {

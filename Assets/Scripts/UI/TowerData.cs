@@ -1,4 +1,5 @@
 using UnityEngine;
+
 [CreateAssetMenu(menuName ="Tower/TowerData")]
 public class TowerData : ScriptableObject
 {

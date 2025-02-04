@@ -24,8 +24,3 @@ public class Tower3DSelection : SelectionVisual
     }
 
 }
-
-//public interface IStatTextDisplayer<T> where T : Stat
-//{
-//    public string GetString
-//}

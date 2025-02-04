@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using UnityEngine;
@@ -10,11 +8,6 @@ public class TimeSpeedUI : MonoBehaviour
     [SerializeField] Text _text;
     CancellationTokenSource _updateCancelToken;
 
-    //void Update()
-    //{
-    //    _text.text = $"Current time speed: {Time.timeScale.ToString("0.00")}\nPress Up/Down arrow keys to change";
-
-    //}
     void OnEnable()
     {
         _updateCancelToken = new CancellationTokenSource();

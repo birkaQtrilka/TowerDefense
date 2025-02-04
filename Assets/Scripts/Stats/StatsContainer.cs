@@ -14,7 +14,6 @@ public class StatsContainer
     {
         var type = typeof(T);
         return stats.FirstOrDefault(s => s.GetType() == type) as T;
-        //if(_statsDictionary == null)
 
     }
 

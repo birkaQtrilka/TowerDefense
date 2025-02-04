@@ -1,15 +1,16 @@
 using UnityEditor;
-using UnityEngine;
+
 //easier way to acces SoundNames. You can use the scriptable object too
 public class SoundNamesWindow : EditorWindow
 {
+    public string[] Names = new string[0];
+
+
     [MenuItem("Stefan/SoundNames")]
     public static void ShowWindow()
     {
         GetWindow<SoundNamesWindow>("SoundNames");
     }
-
-    public string[] Names = new string[0];
 
     private void OnGUI()
     {

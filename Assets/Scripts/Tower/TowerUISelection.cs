@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+
 //strategy of displaying the tower data on a UI panel
 [RequireComponent (typeof(Tower))]
 public class TowerUISelection : SelectionVisual

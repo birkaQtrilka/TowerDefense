@@ -84,6 +84,7 @@ public class TowerSelector : MonoBehaviour
         _currentSelection = visual;
         _currentSelection.Select();
     }
+
     //since upgrading works by destroying old version and spawning a new one, the selection must react
     void OnUpgrade(TowerUpgrader old, TowerUpgrader current)
     {
