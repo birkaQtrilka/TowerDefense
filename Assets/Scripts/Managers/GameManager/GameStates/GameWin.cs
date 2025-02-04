@@ -1,8 +1,10 @@
 ﻿using UnityEngine;
 
+[System.Serializable]
 public class GameWin : State<GameManager>
 {
     public GameWin(GameManager c, int prio) : base(c, prio) { }
+    public GameWin() : base() { }
 
     public override void OnEnter()
     {

@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Name>k__BackingField: Laser
   <Price>k__BackingField: 20
-  <StoreSlotImage>k__BackingField: {fileID: 21300000, guid: 2a5bc553995476945a99c948644eb75f,
+  <StoreSlotImage>k__BackingField: {fileID: 21300000, guid: 8e81cd4e7c38d3c43bd6f4bca54348ee,
     type: 3}
-  <SelectionImage>k__BackingField: {fileID: 21300000, guid: 2a5bc553995476945a99c948644eb75f,
+  <SelectionImage>k__BackingField: {fileID: 21300000, guid: 8e81cd4e7c38d3c43bd6f4bca54348ee,
     type: 3}
   <Description>k__BackingField: 'Low damage, max precision '
   <UpgradeList>k__BackingField:

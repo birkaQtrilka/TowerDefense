@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Name>k__BackingField: Zone
   <Price>k__BackingField: 10
-  <StoreSlotImage>k__BackingField: {fileID: 21300000, guid: e4c6d414440199d4488071371789b459,
+  <StoreSlotImage>k__BackingField: {fileID: 21300000, guid: 65021ebd68002074895007450abc84ce,
     type: 3}
-  <SelectionImage>k__BackingField: {fileID: 21300000, guid: e4c6d414440199d4488071371789b459,
+  <SelectionImage>k__BackingField: {fileID: 21300000, guid: 65021ebd68002074895007450abc84ce,
     type: 3}
   <Description>k__BackingField: Slows down enemies that enter the zone
   <UpgradeList>k__BackingField:

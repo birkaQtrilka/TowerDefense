@@ -1,10 +1,12 @@
 ﻿using UnityEngine;
-
+//Build phase of game
+[System.Serializable]
 public class Build : State<GameManager>
 {
     float _buildingTimer;
 
     public Build(GameManager c, int prio) : base(c,prio) { }
+    public Build() : base() { }
 
     public override void OnEnter()
     {
@@ -20,8 +22,12 @@ public class Build : State<GameManager>
         if(context.Store != null)
             context.Store.gameObject.SetActive(false);
         if (context.TowerPlacer != null)
+        {
+            context.TowerPlacer.Deselect();
             context.TowerPlacer.enabled = false;
-        if(context.TowerSelector != null)
+
+        }
+        if (context.TowerSelector != null)
             context.TowerSelector.Deselect();
         if (context.BuildTimeUI != null)
             context.BuildTimeUI.gameObject.SetActive(false);

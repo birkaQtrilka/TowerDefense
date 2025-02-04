@@ -8,7 +8,20 @@ public class CollisionTargetFinder : TargetFinder
     
     //[SerializeField] List<Transform> _test;
 
-    public override float Range { get => _collider.radius; set => _collider.radius = value; }
+    public override float Range 
+    {
+        get
+        {
+            if (_collider == null) _collider = GetComponent<SphereCollider>();
+
+            return _collider.radius;
+        }
+        set
+        {
+            if (_collider == null) _collider = GetComponent<SphereCollider>();
+            _collider.radius = value;
+        }
+    }
 
     void Awake()
     {

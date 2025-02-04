@@ -4,9 +4,13 @@ using System.Threading;
 using System.Threading.Tasks;
 using UnityEngine;
 //Manages Game states
+//[RequireComponent()]
 public class GameManager : MonoBehaviour, IStateMachine
 {
     public static GameManager Instance { get; private set; }
+
+    [field: SerializeField] public bool CanChangeTime { get; set; } = false;
+
     //to allow backtracking
     public State<GameManager> PreviousState { get; private set; }
     public State<GameManager> CurrentState { get; private set; }
@@ -22,9 +26,10 @@ public class GameManager : MonoBehaviour, IStateMachine
     [field: SerializeField] public PauseMenuUI PauseMenuUI { get; private set; }
     [field: SerializeField] public TowerSelector TowerSelector { get; private set; }
     [field: SerializeField] public TowerPlacer TowerPlacer { get; private set; }
+
     //for testing
     [SerializeField] bool _canChangeStates = true;
-    [SerializeField, Range(0.0f, 2.0f)] float _time = 1;
+    [SerializeField, Range(0.0f, 3.0f)] float _time = 1;
     [SerializeField] string _startState = typeof(Build).Name;
 
     //this is to cancel the async loop to prevent it from playing outside the scene
@@ -61,7 +66,12 @@ public class GameManager : MonoBehaviour, IStateMachine
         else
             Instance = this;
 
-        _states = new()
+        
+    }
+
+    void Start()
+    {
+        _states ??= new()
         {
             { typeof(Build), new Build(this,0)},
             { typeof(Defend), new Defend(this, 0)},
@@ -69,10 +79,7 @@ public class GameManager : MonoBehaviour, IStateMachine
             { typeof(GameWin), new GameWin(this,999)},
             { typeof(Pause), new Pause(this,0)},
         };
-    }
 
-    void Start()
-    {
         Type type = Type.GetType(_startState);
         if (type == null)
         {
@@ -94,20 +101,34 @@ public class GameManager : MonoBehaviour, IStateMachine
         CurrentState.Update();
 
     }
+
+    public void SetStates(Dictionary<Type, State<GameManager>> states)
+    {
+        _states = states;
+    }
+
     //it's async so it doesn't stop on timescale = 0
     async Task TimeScaleLoop(CancellationToken token)
     {
         while (!token.IsCancellationRequested)
         {
-            await Task.Delay(100, token);
+            if (CanChangeTime) continue;
+
             _time = Time.timeScale;
+            await Task.Delay(20, token);
+            
+
             if (Input.GetKey(KeyCode.UpArrow))
             {
-                _time = Mathf.Clamp(_time + 0.1f, 0.0f, 2.0f);
+                _time = Mathf.Clamp(_time + 0.2f, 0.0f, 3.0f);
+                await Task.Delay(50, token);
+
             }
             else if (Input.GetKey(KeyCode.DownArrow))
             {
-                _time = Mathf.Clamp(_time - .1f, 0.0f, 2.0f);
+                _time = Mathf.Clamp(_time - .2f, 0.0f, 3.0f);
+                await Task.Delay(50, token);
+
             }
             Time.timeScale = _time;
         }

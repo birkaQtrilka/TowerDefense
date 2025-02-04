@@ -1,11 +1,15 @@
 ﻿using UnityEngine;
 
+[System.Serializable]
 public class Pause : State<GameManager>
 {
     public Pause(GameManager c, int prio) : base(c, prio) { }
+    public Pause() : base() { }
+    float _timeScaleBeforePause;
 
     public override void OnEnter()
     {
+        _timeScaleBeforePause = Time.timeScale;
         Time.timeScale = 0;
         context.PauseMenuUI.gameObject.SetActive(true);
 
@@ -15,7 +19,7 @@ public class Pause : State<GameManager>
     {
         if (context.PauseMenuUI != null)
             context.PauseMenuUI.gameObject.SetActive(false);
-        Time.timeScale = 1;
+        Time.timeScale = _timeScaleBeforePause;
 
     }
 

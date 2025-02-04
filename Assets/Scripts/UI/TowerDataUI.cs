@@ -11,8 +11,11 @@ public class TowerDataUI : MonoBehaviour
     [SerializeField] Text _damageTypeText;
     [SerializeField] Text _nameText;
     
-    public void UpdateVisual(Tower tower, TowerData data)
+    public void UpdateVisual(TowerData data)
     {
+        gameObject.SetActive(true);
+        Tower tower = data.Prefab;
+
         _selectionImg.sprite = data.SelectionImage;
 
         _nameText.text = data.Name;
@@ -21,7 +24,7 @@ public class TowerDataUI : MonoBehaviour
         Damage towerDamage = tower.BulletPrefab.GetComponent<BulletDamager>().Damage;
         _damageText.text = towerDamage.OriginalValue.ToString();
         _damageTypeText.text = towerDamage.Type.ToString();
-        _rangeText.text = tower.GetComponent<TargetFinder>().Range.ToString();
+        _rangeText.text = tower.GetComponentInChildren<TargetFinder>().Range.ToString();
         _descriptionText.text = data.Description;
     }
 }

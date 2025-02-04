@@ -1,17 +1,22 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ActiveCopy : MonoBehaviour
 {
     [SerializeField] GameObject _mirroredObject;
 
+
     bool _main = true;
     GameObject _alwaysActiveObject;
 
-    void Awake()
+
+    void Start()
     {
-        //So I can run a coroutine even if this object is inactive
+        if (!_main) return;
+
         _alwaysActiveObject = new GameObject("Always Active Object");
+
         ActiveCopy monobehavior = _alwaysActiveObject.AddComponent<ActiveCopy>();
         monobehavior._main = false;
         monobehavior.StartCoroutine(UpdateCR());

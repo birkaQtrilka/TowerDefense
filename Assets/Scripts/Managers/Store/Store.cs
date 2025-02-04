@@ -11,7 +11,6 @@ public class Store : MonoBehaviour
 
     //it's outside the hierarchy of the store because elsewise it would react to screen res change weirdly
     [SerializeField] Button _startGameBtn;
-    [SerializeField] TowerDataUI _ui;
     //to equip a tower on selection
     [SerializeField] TowerPlacer _towerPlacer;
 
@@ -43,7 +42,6 @@ public class Store : MonoBehaviour
         foreach (var slot in _slots)
         {
             slot.Clicked += OnSlotPressed;
-            slot.Hover += OnSlotHover;
         }
 
         UpdateVisual(Money.CurrentValue, Money);
@@ -60,16 +58,11 @@ public class Store : MonoBehaviour
         foreach (var slot in _slots)
         {
             slot.Clicked -= OnSlotPressed;
-            slot.Hover -= OnSlotHover;
         }
         _startGameBtn.gameObject.SetActive(false);
 
     }
 
-    void OnSlotHover(TowerData data)
-    {
-        _ui.UpdateVisual(data.Prefab, data);
-    }
 
     void OnSlotPressed(TowerData data)
     {

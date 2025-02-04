@@ -1175,6 +1175,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 215e3451ef9c0f547b89edc8eae60086, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <CanChangeTime>k__BackingField: 1
   <BuildTime>k__BackingField: 60
   <BuildTimeUI>k__BackingField: {fileID: 0}
   <Store>k__BackingField: {fileID: 0}
@@ -1910,39 +1911,9 @@ MonoBehaviour:
       m_Calls: []
   <ValuesChanged>k__BackingField:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: WaveUI, Assembly-CSharp
-        m_MethodName: UpdateUI
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   pathingManager: {fileID: 244097226}
-  waves:
-  - _enemySets:
-    - Amount: 5
-      EnemyPrefab: {fileID: 8663661722552875389, guid: ef5fafb1d4559ed4983134e636d6691b,
-        type: 3}
-      Pause: 0.2
-    - Amount: 1
-      EnemyPrefab: {fileID: 6097639607526921554, guid: f016f1e780143cd4e872ee2a9e6ed40c,
-        type: 3}
-      Pause: 0.2
-  - _enemySets:
-    - Amount: 1
-      EnemyPrefab: {fileID: 64591418796286064, guid: 39d30aa8044be1141a9c103f94da6ae8,
-        type: 3}
-      Pause: 0.2
-    - Amount: 3
-      EnemyPrefab: {fileID: 8663661722552875389, guid: ef5fafb1d4559ed4983134e636d6691b,
-        type: 3}
-      Pause: 0.2
+  _wavesContainer: {fileID: 11400000, guid: 8fbb969ca68ce004ea542b44d18d2c03, type: 2}
 --- !u!1 &1726278106
 GameObject:
   m_ObjectHideFlags: 0
