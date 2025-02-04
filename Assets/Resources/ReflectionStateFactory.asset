@@ -12,3 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d3b5168592d0c543ba62726633a8265, type: 3}
   m_Name: ReflectionStateFactory
   m_EditorClassIdentifier: 
+  _getInitData: 0
+  _initData:
+  - Name: Build
+    Priority: 0
+  - Name: Defend
+    Priority: 0
+  - Name: GameOver
+    Priority: 999
+  - Name: GameWin
+    Priority: 999
+  - Name: Pause
+    Priority: 0

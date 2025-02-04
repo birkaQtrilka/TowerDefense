@@ -7,14 +7,17 @@ public class Build : State<GameManager>
 
     public Build(GameManager c, int prio) : base(c,prio) { }
     public Build() : base() { }
-
+    float _timeScaleBeforeEnter;
     public override void OnEnter()
     {
+        _timeScaleBeforeEnter = Time.timeScale;
+        Time.timeScale = 1;
         context.Store.gameObject.SetActive(true);
         context.TowerPlacer.enabled = true;
         context.TowerSelector.enabled = true;
         context.BuildTimeUI.gameObject.SetActive(true);
         _buildingTimer = context.BuildTime;
+
     }
 
     public override void OnExit()
@@ -33,7 +36,7 @@ public class Build : State<GameManager>
             context.BuildTimeUI.gameObject.SetActive(false);
         if (context.TowerSelector != null)
             context.TowerSelector.enabled = false;
-
+        Time.timeScale = _timeScaleBeforeEnter;
     }
 
     public override void Update()

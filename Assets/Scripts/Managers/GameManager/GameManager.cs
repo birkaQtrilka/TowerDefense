@@ -112,11 +112,11 @@ public class GameManager : MonoBehaviour, IStateMachine
     {
         while (!token.IsCancellationRequested)
         {
-            if (CanChangeTime) continue;
 
             _time = Time.timeScale;
             await Task.Delay(20, token);
             
+            if (!CanChangeTime) continue;
 
             if (Input.GetKey(KeyCode.UpArrow))
             {

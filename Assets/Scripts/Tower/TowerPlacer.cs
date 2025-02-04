@@ -54,13 +54,14 @@ public class TowerPlacer : MonoBehaviour
     {
         DeselectHover();
 
-        if (Input.anyKey)
+        bool clicked = Input.GetMouseButtonDown(0);
+
+        if (Input.anyKey && !clicked)
         {
             Deselect();
             return;
         }
 
-        bool clicked = Input.GetMouseButtonDown(0);
 
 
         if (_currentSelection == null || 
